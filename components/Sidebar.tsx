@@ -6,7 +6,7 @@ import Profile from "./Profile";
 export default function Sidebar() {
   const tooltiptext = useRef<HTMLSpanElement>(null);
   const [showConnScreen, setShowConnScreen] = useState<boolean>(false);
-  const [username, setUsername] = useState<string>("");
+  
 
   var hovertimer: any;
 
@@ -50,7 +50,7 @@ export default function Sidebar() {
             Add a connection to your peers to create a message room
           </span>
         </button>
-        <Profile username={username} setUsername={setUsername} />
+        <Profile />
       </div>
     </>
   );

@@ -1,7 +1,4 @@
 import Image from "next/image";
-import { useEffect } from "react";
-import { io } from "socket.io-client";
-
 
 type message = {
   message: {

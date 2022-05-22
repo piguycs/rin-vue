@@ -1,63 +1,52 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styles from "../styles/MessageArea.module.css";
 import Message from "./repeated/Message";
 import { connect } from "socket.io-client";
+import { UsernameContext } from "../utils/UsernameContext";
 
 export default function MessageArea() {
   const [messages, setMessages] = useState<JSX.Element[]>([]);
   const msgBox = useRef(null);
+  
+  const {username, setUsername}:any = useContext(UsernameContext)
   
   useEffect((): any => {
     const socket = connect("localhost:3000", {
       path: "/api/socketio",
     });
     socket.on("message", (message) => {
-      const props = {
+      let props = {
         content: message.message,
         sender: {
           pfp: "https://avatars.dicebear.com/api/bottts/rin.svg",
-          name: "HALLOO",
+          name: message.username,
           id: "id... more like IDK AMIRITE (kmn)",
         },
         room: undefined,
       };
+      console.log(props)
       messages.push(<Message message={props} />)
       setMessages([...messages]);
+      (msgBox.current! as any).value = "";
     });
 
     if (socket) return () => socket.disconnect();
   }, []);
 
   // this pushes the message on to the network
-  const pushMsgNet = async (message: string) => {
+  const pushMsgNet = async (message: string, username:string) => {
     const resp = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message,username }),
     });
   };
 
   // the function which sends message
   const sendMessage = (content: string, sentbyme = true) => {
-    console.log(content);
-    const props = {
-      content: content,
-      sender: {
-        pfp: "https://avatars.dicebear.com/api/bottts/rin.svg",
-        name: "HALLOO",
-        id: "id... more like IDK AMIRITE (kmn)",
-      },
-      room: undefined,
-    };
-    if ((msgBox.current! as any).value !== "" || sentbyme === false) {
-      messages.push(<Message message={props} />)
-      setMessages([...messages]);
-      (msgBox.current! as any).value = "";
-    }
-
-    sentbyme && pushMsgNet(content);
+    sentbyme && pushMsgNet(content, username);
   };
 
   return (
