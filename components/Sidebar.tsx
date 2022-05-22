@@ -1,24 +1,38 @@
-import styles from '../styles/App.module.css'
+import { useRef, useState } from "react";
+import styles from "../styles/App.module.css";
+import AddConnScreen from "./AddConnScreen";
+import Profile from "./Profile";
 
 export default function Sidebar() {
-  var hovertimer:any
+  const tooltiptext = useRef<HTMLSpanElement>(null);
+  const [showConnScreen, setShowConnScreen] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
+
+  var hovertimer: any;
+
   const tooltipShow = () => {
-    document.getElementById("tooltiptext")!.style.visibility = "visible";
-    document.getElementById("tooltiptext")!.style.opacity = "1";
+    tooltiptext.current!.style.visibility = "visible";
+    tooltiptext.current!.style.opacity = "1";
   };
   const tooltipHide = () => {
-    document.getElementById("tooltiptext")!.style.visibility = "hidden";
-    document.getElementById("tooltiptext")!.style.transition = "opacity 0.6s";
-    document.getElementById("tooltiptext")!.style.opacity = "0";
+    tooltiptext.current!.style.visibility = "hidden";
+    tooltiptext.current!.style.transition = "opacity 0.6s";
+    tooltiptext.current!.style.opacity = "0";
   };
 
   // add connection button
-  const addConn = (e:any) => {
-    e.preventDefault()
-    console.log("hello")
-  }
+  const addConn = (e: any) => {
+    e.preventDefault();
+    clearTimeout(hovertimer);
+    setShowConnScreen(true);
+  };
 
   return (
+    <>
+      <AddConnScreen
+        showConnScreen={showConnScreen}
+        setShowConnScreen={setShowConnScreen}
+      />
       <div className={styles.rooms}>
         <button className={styles.addroombtn} onClick={addConn}>
           <span
@@ -32,10 +46,12 @@ export default function Sidebar() {
           >
             Add a connection
           </span>
-          <span id="tooltiptext" className={styles.tooltiptext}>
+          <span ref={tooltiptext} className={styles.tooltiptext}>
             Add a connection to your peers to create a message room
           </span>
         </button>
+        <Profile username={username} setUsername={setUsername} />
       </div>
-  )
+    </>
+  );
 }
