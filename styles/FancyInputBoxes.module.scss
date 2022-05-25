@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Fira Code";
+  src: url("../public/fonts/Fira-Code-Regular-Nerd-Font-Complete-Mono.woff") format("woff");
+}
+
+
 .input {
   position: relative;
   --color-dark: hsl(0, 0%, 100%);
@@ -27,6 +33,13 @@
     // background: var(--color-background);
     transition: transform 120ms ease-in;
     font-weight: 600;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   &__field {
     box-sizing: border-box;
@@ -58,6 +71,17 @@
   position: absolute;
   right: 8px;
   top: 25%;
+  cursor: pointer;
+  font-family: 'Fira Code';
+  font-size: 28px;
+  line-height: 26px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .submit {
