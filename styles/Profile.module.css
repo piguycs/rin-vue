@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+.profile label {
+  min-width: 32px;
+  aspect-ratio: 1/1;
+}
+
 .profile input {
   background-color: rgba(0,0,0,0);
   border: 0;
@@ -19,7 +24,7 @@
   color: #fefefe;
   font-size: 16px;
   font-weight: 600;
-  max-width: 14rem;
+  max-width: 12rem;
   padding-left: 8px;
   padding-right: 8px;
 }

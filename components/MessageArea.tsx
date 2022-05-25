@@ -8,7 +8,7 @@ export default function MessageArea() {
   const [messages, setMessages] = useState<JSX.Element[]>([]);
   const msgBox = useRef(null);
   
-  const {username, setUsername}:any = useContext(UsernameContext)
+  const {username}:any = useContext(UsernameContext)
   
   useEffect((): any => {
     const socket = connect("localhost:3000", {
@@ -18,18 +18,19 @@ export default function MessageArea() {
       let props = {
         content: message.message,
         sender: {
-          pfp: "https://avatars.dicebear.com/api/bottts/rin.svg",
+          pfp: `https://avatars.dicebear.com/api/bottts/${message.username}.svg`,
           name: message.username,
           id: "id... more like IDK AMIRITE (kmn)",
         },
         room: undefined,
       };
-      console.log(props)
+      
+      // append the message
       messages.push(<Message message={props} />)
       setMessages([...messages]);
       (msgBox.current! as any).value = "";
     });
-
+    
     if (socket) return () => socket.disconnect();
   }, []);
 
@@ -46,6 +47,10 @@ export default function MessageArea() {
 
   // the function which sends message
   const sendMessage = (content: string, sentbyme = true) => {
+    if (username === "") {
+      alert("Please enter a username")
+      return
+    }
     sentbyme && pushMsgNet(content, username);
   };
 
