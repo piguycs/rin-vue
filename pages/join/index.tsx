@@ -1,13 +1,13 @@
 import Head from "next/head";
-import Login from "./Login";
+import Join from "./Join";
 
-export default function loginIndex() {
+export default function index() {
   return (
     <>
       <Head>
         <title>rin chat</title>
       </Head>
-    <Login />
+    <Join />
     </>
   )
 }

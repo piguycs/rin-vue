@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "../styles/Profile.module.css";
-import { UsernameContext } from "../utils/UsernameContext";
+import { UsernameContext } from "../utils/contexts/UsernameContext";
 import Image from "next/image";
 
 export default function Profile() {

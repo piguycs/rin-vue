@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import styles from "../styles/MessageArea.module.css";
 import Message from "./repeated/Message";
 import { connect } from "socket.io-client";
-import { UsernameContext } from "../utils/UsernameContext";
+import { UsernameContext } from "../utils/contexts/UsernameContext";
 
 export default function MessageArea() {
   const [messages, setMessages] = useState<JSX.Element[]>([]);

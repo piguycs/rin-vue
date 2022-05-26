@@ -30,6 +30,7 @@
 
   grid-area: a;
 
+  transition: all 0.5s;
 }
 
 .loginbox h1 {
@@ -111,5 +112,29 @@
   to {
     right: 0;
     opacity: 1
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .loginbox {
+    min-width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-height: 47rem) {
+  .loginbox {
+    min-width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .loginroot {
+    background-image: none;
+    background-color: hsl(238, 25%, 10%);
   }
 }

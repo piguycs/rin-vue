@@ -1,6 +1,10 @@
 import styles from "../../styles/Login.module.css";
 import inputStyles from "../../styles/FancyInputBoxes.module.scss";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useContext, useEffect, useRef, useState } from "react";
+import { supabase } from "../../utils/supabase";
+import { UserCTX } from "../../utils/contexts/UserContext";
+import Link from "next/link";
+
 
 export default function Login() {
   const [showPsswd, togglePsswd] = useState<"password" | "text">("password");
@@ -13,9 +17,34 @@ export default function Login() {
   const psswdincorrect = useRef<HTMLSpanElement>(null);
   const unameincorrect = useRef<HTMLSpanElement>(null);
 
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  
+  const userctx = useContext(UserCTX)
+  
+
+  const handleLogin = async () => {
+    try {
+      setLoading(true);
+      const { user, error } = await supabase.auth.signIn({
+        email: email,
+        password: password,
+      });
+      if (error) throw error;
+      userctx?.setUser(user ? user : undefined)
+      alert("Check your email for the login link!");
+    } catch (error: any) {
+      alert(error.error_description || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     psswdincorrect.current!.style.visibility = "visible";
+    handleLogin()
   };
 
   useEffect(() => {
@@ -57,11 +86,16 @@ export default function Login() {
         </h1>
 
         <form className={styles.loginform} onSubmit={submit}>
+          {/* USERNAME INPUT BOX */}
           <label className={inputStyles.input}>
             <input
               className={inputStyles.input__field}
               type="text"
               placeholder=""
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }}
             />
             <span className={inputStyles.input__label}>Username</span>
             <span ref={unameincorrect} className={inputStyles.inputerror}>
@@ -69,16 +103,23 @@ export default function Login() {
             </span>
           </label>
 
+          {/* PASSWORD INPUT BOX */}
           <label className={inputStyles.input}>
             <input
               className={inputStyles.input__field}
               type={showPsswd}
               placeholder=""
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value)
+              }}
             />
             <span className={inputStyles.input__label}>Password</span>
             <span
               className={inputStyles.showpsswd}
-              style={showPsswd === "password" ? {color: "hsl(0, 0%, 43%)"} : {}}
+              style={
+                showPsswd === "password" ? { color: "hsl(0, 0%, 43%)" } : {}
+              }
               onClick={() => {
                 if (showPsswd === "password") {
                   togglePsswd("text");
@@ -102,14 +143,16 @@ export default function Login() {
             />
           </label>
         </form>
+        <Link href="/join">
         <span
           className={styles.extraslink}
-          onClick={() => {
-            setOthers(!others);
-          }}
-        >
-          more options
+          //onClick={() => {
+          //  setOthers(!others);
+          //}}
+          >
+          create an account
         </span>
+        </Link>
       </div>
 
       {others ? (

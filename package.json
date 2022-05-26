@@ -9,8 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "3.14.0",
+    "@supabase/supabase-js": "^1.35.3",
     "@types/socket.io-client": "^3.0.0",
     "next": "12.1.6",
+    "prisma": "^3.14.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "socket.io": "^4.5.1",
