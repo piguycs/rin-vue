@@ -15,3 +15,13 @@ model invites {
   created_by String?
   uses       Int       @default(1)
 }
+
+model profiles {
+  // this is a fireign key in the real schema
+  // but for now this should work for basic querying
+  // as I wont be modifying the table this key is from anyways
+  id         String @id @unique
+  username   String
+  avatar_url String
+
+}

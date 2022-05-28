@@ -23,6 +23,13 @@ export default function Login() {
   
   const userctx = useContext(UserCTX)
   
+  const [user, setUser] = useState<any>()
+  
+  useEffect(() => {
+    console.log(supabase.auth.session()?.user?.id)
+  },[])
+
+  
 
   const handleLogin = async () => {
     try {
@@ -32,8 +39,7 @@ export default function Login() {
         password: password,
       });
       if (error) throw error;
-      userctx?.setUser(user ? user : undefined)
-      alert("Check your email for the login link!");
+      setUser(user ? user : undefined)
     } catch (error: any) {
       alert(error.error_description || error.message);
     } finally {

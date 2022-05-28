@@ -5,18 +5,44 @@ import { useState } from "react";
 export default function Join() {
   const [inviteCode, setInviteCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [inviteIsValid, setInviteValidity] = useState(false);
+  const [inviteError, setInviteError] = useState<false|string>(false)
+  
+  // email and password
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  
+  const sendErr = (error: string) => {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      // send browser alerts
+      alert(error);
+    } else {
+      // send custom alerts
+
+
+    }
+
+  }
 
   const checkInvite = async () => {
     setLoading(true);
-    const res = await fetch("/api/invitecodes", {
+    const res = await fetch("/api/join", {
       method: "POST",
-      body: JSON.stringify({ code: inviteCode }),
+      body: JSON.stringify({ code: inviteCode, email:email, password:password }),
       credentials: "same-origin",
       headers: {
         Authorization: "HALO"
       },
     });
-    (await res.json()).success ? alert("VALID") : alert("INVALID")
+    const response = await res.json()
+    setInviteValidity(response.success ? true : false)
+    if (!inviteIsValid) {
+      setInviteError(response.error)
+    }
     setLoading(false);
   };
 
@@ -45,10 +71,16 @@ export default function Join() {
             />
             <span className={inputStyles.input__label}>Invite Code</span>
             <span
+              className={inputStyles.showpsswd}
+              style={{ color: "hsl(0, 0%, 43%)" }}
+            >
+              {""}
+            </span>
+            <span
               className={inputStyles.inputerror}
               style={loading ? { visibility: "visible" } : {}}
             >
-              loading
+              {inviteError}
             </span>
           </label>
 
@@ -58,16 +90,31 @@ export default function Join() {
               className={inputStyles.input__field}
               type="text"
               placeholder=""
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <span className={inputStyles.input__label}>Email</span>
-            <span className={inputStyles.inputerror}>email is invalid</span>
+            <span className={inputStyles.inputerror}>Check if this is correct</span>
+          </label>
+
+          {/* PASSWORD INPUT BOX */}
+          <label className={inputStyles.input}>
+            <input
+              className={inputStyles.input__field}
+              type="password"
+              placeholder=""
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span className={inputStyles.input__label}>Password</span>
+            <span className={inputStyles.inputerror}>Check if this is correct</span>
           </label>
 
           <label>
             <input
               className={inputStyles.submit}
               type="submit"
-              value="Get Invite Link"
+              value="Join"
             />
           </label>
         </form>
