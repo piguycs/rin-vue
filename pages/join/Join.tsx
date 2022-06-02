@@ -1,18 +1,19 @@
 import styles from "../../styles/Login.module.css";
 import inputStyles from "../../styles/FancyInputBoxes.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Join() {
   const [inviteCode, setInviteCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [inviteIsValid, setInviteValidity] = useState(false);
-  const [inviteError, setInviteError] = useState<false|string>(false)
-  
+  const [inviteError, setInviteError] = useState<false | string>(false);
+
   // email and password
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  
-  const sendErr = (error: string) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const sendErr = (error:any) => {
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
@@ -22,26 +23,28 @@ export default function Join() {
       alert(error);
     } else {
       // send custom alerts
-
-
+      alert(error);
     }
-
-  }
+  };
 
   const checkInvite = async () => {
     setLoading(true);
     const res = await fetch("/api/join", {
       method: "POST",
-      body: JSON.stringify({ code: inviteCode, email:email, password:password }),
+      body: JSON.stringify({
+        code: inviteCode,
+        email: email,
+        password: password,
+      }),
       credentials: "same-origin",
       headers: {
-        Authorization: "HALO"
+        Authorization: "HALO",
       },
     });
-    const response = await res.json()
-    setInviteValidity(response.success ? true : false)
+    const response = await res.json();
+    setInviteValidity(response.success ? true : false);
     if (!inviteIsValid) {
-      setInviteError(response.error)
+      sendErr(response.error)
     }
     setLoading(false);
   };
@@ -94,7 +97,9 @@ export default function Join() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <span className={inputStyles.input__label}>Email</span>
-            <span className={inputStyles.inputerror}>Check if this is correct</span>
+            <span className={inputStyles.inputerror}>
+              Check if this is correct
+            </span>
           </label>
 
           {/* PASSWORD INPUT BOX */}
@@ -107,15 +112,13 @@ export default function Join() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <span className={inputStyles.input__label}>Password</span>
-            <span className={inputStyles.inputerror}>Check if this is correct</span>
+            <span className={inputStyles.inputerror}>
+              Check if this is correct
+            </span>
           </label>
 
           <label>
-            <input
-              className={inputStyles.submit}
-              type="submit"
-              value="Join"
-            />
+            <input className={inputStyles.submit} type="submit" value="Join" />
           </label>
         </form>
       </div>

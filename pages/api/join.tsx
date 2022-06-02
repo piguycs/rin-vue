@@ -25,9 +25,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       throw [406, { error: "Invite code is not valid", code_validity: false }];
     }
 
-    const uses = response.uses;
+    const max_uses = response.max_uses;
+    const created_users = response.created_users ?? [];
+    const codeUsesRemaining = max_uses - created_users.length;
 
-    if (uses <= 0) {
+    if (codeUsesRemaining <= 0) {
       throw [
         406,
         { error: "Invite code has already been used", code_validity: false },
@@ -44,10 +46,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (email === "" && email === "") {
       throw [406, { error: "Email/Password is not provided" }];
     }
+    
+    if (created_users.includes(email)) {
+      throw [409, {error: "User already exists"}]
+    }
 
     const {user, error, session} = await supabase.auth.signUp({ email, password });
-    
-    supabase.from("profiles").select("avatar_url")
     
     if (error) {
       throw [406, error];
@@ -57,7 +61,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (response) {
       await prisma.invites.update({
         where: { invite_key: code },
-        data: { uses: uses - 1 },
+        data: { created_users: [...created_users, email]},
       });
     }
 
