@@ -11,22 +11,32 @@ export default function Profile() {
     `https://avatars.dicebear.com/api/bottts/${username}.svg`
   );
 
+  let hi = false
+
   useEffect(() => {
     const id = supabase.auth.session()?.user?.id;
     if (true) {
       setUserAuth(true);
       const asfn = async () => {
-        const user = await fetch(`/api/getuser?id=${id}`);
-        const res = await user.json();
+        // need this checker coz the code is fucking shit up
+        if (hi) {return}
+        hi = true
 
-        const avatar = res.avatar_url;
-        const username = res.username;
-        setPfp(avatar);
-        setUsername(username);
+        try {
+          const user = await fetch(`/api/getuser?id=${id}`);
+          const res = await user.json();
+
+          const avatar = res.avatar_url;
+          const username = res.username;
+          setPfp(avatar);
+          setUsername(username);
+        } catch (err) {
+          console.log(err);
+        }
       };
       asfn();
     }
-  }, [supabase]);
+  }, []);
 
   return (
     <form
@@ -36,7 +46,7 @@ export default function Profile() {
         setUsername(username);
       }}
     >
-      <label style={{display: "flex"}}>
+      <label style={{ display: "flex" }}>
         <Image
           src={pfp}
           width={32}

@@ -8,6 +8,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (id) {
     const profile = await prisma.profiles.findUnique({ where: { id: id } });
     res.status(200).send(profile);
-  }
+  } else {
   res.status(418).send("idk");
+  }
 };

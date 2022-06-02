@@ -9,40 +9,9 @@ export default function MessageArea() {
   const msgBox = useRef(null);
   
   const {username}:any = useContext(UsernameContext)
-  
-  useEffect((): any => {
-    const socket = connect("localhost:3000", {
-      path: "/api/socketio",
-    });
-    socket.on("message", (message) => {
-      let props = {
-        content: message.message,
-        sender: {
-          pfp: `https://avatars.dicebear.com/api/bottts/${message.username}.svg`,
-          name: message.username,
-          id: "id... more like IDK AMIRITE (kmn)",
-        },
-        room: undefined,
-      };
-      
-      // append the message
-      messages.push(<Message message={props} />)
-      setMessages([...messages]);
-      (msgBox.current! as any).value = "";
-    });
-    
-    if (socket) return () => socket.disconnect();
-  }, []);
 
   // this pushes the message on to the network
   const pushMsgNet = async (message: string, username:string) => {
-    const resp = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message,username }),
-    });
   };
 
   // the function which sends message
