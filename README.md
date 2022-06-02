@@ -5,9 +5,7 @@ Tested with node 18.2
 
 # Screenshots
 ![Main App]("https://raw.githubusercontent.com/RocKing1001/rin/main/.github/images/Screenshot1.png")
-
 ![Login Page]("https://raw.githubusercontent.com/RocKing1001/rin/main/.github/images/Screenshot2.png")
-
 
 # Tech Stack
 - NextJS
