@@ -1,8 +1,12 @@
-import { User } from "@supabase/supabase-js";
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import { createContext, Dispatch, SetStateAction, useContext } from "react";
 
 type state = {
-  user: User|undefined;
-  setUser: Dispatch<SetStateAction<User|undefined>>;
+  username: string
+  setUsername: Dispatch<SetStateAction<string>>
+  avatar: string
+  setAvatar: Dispatch<SetStateAction<string>>
+  loading: boolean
+  setLoading: Dispatch<SetStateAction<boolean>>
 };
-export const UserCTX = createContext<state|null>(null)
+
+export const UserContext = createContext<state|null>(null)

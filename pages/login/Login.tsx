@@ -1,8 +1,7 @@
 import styles from "../../styles/Login.module.css";
 import inputStyles from "../../styles/FancyInputBoxes.module.scss";
-import { FormEvent, useContext, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { supabase } from "../../utils/supabase";
-import { UserCTX } from "../../utils/contexts/UserContext";
 import Link from "next/link";
 
 
@@ -20,8 +19,6 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  
-  const userctx = useContext(UserCTX)
   
   const [user, setUser] = useState<any>()
   
@@ -92,20 +89,20 @@ export default function Login() {
         </h1>
 
         <form className={styles.loginform} onSubmit={submit}>
-          {/* USERNAME INPUT BOX */}
+          {/* EMAIL INPUT BOX */}
           <label className={inputStyles.input}>
             <input
               className={inputStyles.input__field}
               type="text"
-              placeholder=""
+              placeholder=" "
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value)
               }}
             />
-            <span className={inputStyles.input__label}>Username</span>
+            <span className={inputStyles.input__label}>Email</span>
             <span ref={unameincorrect} className={inputStyles.inputerror}>
-              Username is incorrect
+              Email is incorrect
             </span>
           </label>
 
@@ -114,7 +111,7 @@ export default function Login() {
             <input
               className={inputStyles.input__field}
               type={showPsswd}
-              placeholder=""
+              placeholder=" "
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value)

@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+.root {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  background-color: hsl(238, 25%, 15%);
+}
+
+.profile {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-template-areas:
+    "a"
+    "b";
+  min-width: 700px;
+  width: 30vw;
+  height: 750px;
+  box-shadow: 0px 0px 11px hsl(238, 25%, 11%);
+  border-radius: 12px;
+
+  transition: 0.3s;
+}
+
+.topdiv {
+  background-color: burlywood;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.bottomdiv {
+  background-color: hsl(238, 25%, 10%);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "a b"
+    "c d";
+}
+
+.pfp {
+  position: relative;
+  border-radius: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border: 13px solid hsl(238, 25%, 10%);
+  background-color: hsl(238, 25%, 10%);
+}
+
+.pfpedit {
+  position: absolute;
+  color: white;
+  margin: 12px;
+  border-radius: 6px;
+  background-color: rgba(0,0,0,32%);
+  display: none;
+  font-size: 0;
+  width: 0;
+  padding: 0;
+}
+
+.username {
+  color: white;
+  padding: 15px;
+  padding-left: 1rem;
+  top: 0;
+  position: relative;
+  grid-area: a;
+}
+
+.badges {
+  padding: 15px;
+  top: 0 !important;
+  position: relative;
+  text-align: end;
+  grid-area: b;
+}
+
+.desc {
+  grid-area: c;
+
+  resize: none;
+
+  background-color: rgba(0,0,0,0);
+  outline: 0;
+  border: 0;
+  color: white;
+  font-size: 20px;
+  border-radius: 12px;
+  margin: 1rem;
+  padding: 12px;
+
+  min-height: 200px;
+
+  font-family: 'Fira Code', monospace;
+}
+
+.desc:focus {
+  background-color: hsl(238, 25%, 12%);
+}
+
+@media only screen and (max-width: 800px) {
+  .profile {
+    min-width: 100vw;
+    min-height: 100vh;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .topdiv, .bottomdiv {
+    border-radius: 0;
+  }
+}
+
+// the action buttons area 
+.actions {
+  grid-area: d;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+
+  background-color: rgba(0,0,0,0);
+  color: white;
+  font-size: 20px;
+  border-radius: 12px;
+  margin: 1rem;
+
+  min-height: 200px;
+  
+  button {
+    height: 100%;
+    max-height: 55px;
+    background-color: hsl(238, 25%, 14%);
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: start;
+    padding-left: 16px;
+    transition: all 0.3s;
+    
+    &:hover {
+      background-color: hsl(346, 67%, 65%);
+      box-shadow: 0 0 5px hsl(346, 67%, 70%);
+      scale: 1.02;
+    }
+    &:active {
+      transition: all 0.2s;
+      background-color: hsl(346, 67%, 53%);
+      box-shadow: 0 0 5px hsl(346, 67%, 58%);
+      scale: 0.95;
+      
+    }
+    
+  }
+}
