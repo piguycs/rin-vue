@@ -9,4 +9,4 @@ type state = {
   setLoading: Dispatch<SetStateAction<boolean>>
 };
 
-export const UserContext = createContext<state|null>(null)
+export const UserContext = createContext<state|"">("")

@@ -7,7 +7,7 @@ import { UserContext } from "../../utils/contexts/UserContext";
 // socketio instance
 const socket = connect(process.env.NEXT_PUBLIC_BACKEND_URL, {
   path: "/ws/socket.io",
-  autoConnect: false
+  autoConnect: false,
 });
 
 type msgtype = {
@@ -26,6 +26,7 @@ export default function MessageArea() {
   const msgBox = useRef<HTMLInputElement>(null);
 
   const { username, avatar }: any = useContext(UserContext);
+  
   socket.on("message", (msg: msgtype) => {
     pushMsgNet(msg);
   });
@@ -38,8 +39,7 @@ export default function MessageArea() {
 
   // socketio events
   useEffect(() => {
-    socket.auth = {id:username}
-    socket.connect()
+    socket.connect();
     // cleanup
     return () => {
       socket.disconnect();
@@ -51,7 +51,10 @@ export default function MessageArea() {
     // this is the object which will be sent to the shit
 
     // this adds to the end of the message pile
-    setMessages([...messages, <Message message={msg} />]);
+    setMessages([
+      ...messages,
+      <Message key={`msg_${messages.length}`} message={msg} />,
+    ]);
 
     // reset the message box
     msgBox.current!.value = "";

@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -14,7 +15,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
 
         <h1 className={styles.title}>
-          Welcome to <a href='/app'>rin</a>
+          Welcome to <Link href='/app'><a>rin</a></Link>
         </h1>
 
       </main>
