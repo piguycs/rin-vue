@@ -25,17 +25,16 @@
 
 .msginpt {
   height: 100%;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   border: 0;
   border-color: #555;
   color: #f2f7fe;
   padding-right: 5px;
   font-size: medium;
-}
-
-.msginpt:focus {
-  outline: 0;
-  border-color: #f2f7fe;
+  &:focus {
+    outline: 0;
+    border-color: #f2f7fe;
+  }
 }
 
 .sendbtn {
@@ -49,14 +48,15 @@
   padding-right: 20px;
   border-radius: 20px;
   width: fit-content;
-}
 
-.sendbtn:hover {
-  background-color: hsl(346, 67%, 60%);
-  transition: background-color 0.3s;
-}
+  &:hover {
+    background-color: hsl(346, 67%, 60%);
+    transition: background-color 0.3s;
+  }
 
-.sendbtn:active {
-  background-color: hsl(346, 67%, 53%);
-  transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:active {
+    background-color: hsl(346, 67%, 53%);
+    transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    scale: 0.96;
+  }
 }

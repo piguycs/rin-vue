@@ -1,7 +1,7 @@
 import { useState } from "react";
-import MessageArea from "../../components/MessageArea";
+import MessageArea from "./MessageArea";
 import Sidebar from "../../components/Sidebar";
-import styles from "../../styles/App.module.css";
+import styles from "../../styles/App.module.scss";
 import { UserContext } from "../../utils/contexts/UserContext";
 
 type prop = {

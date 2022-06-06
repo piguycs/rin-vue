@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
-import styles from "../styles/AddConnScreen.module.css";
+import styles from "../styles/AddConnScreen.module.scss";
 
 type props = {
   showConnScreen: boolean;

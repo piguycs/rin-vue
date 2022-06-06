@@ -83,12 +83,12 @@
 
 .submitbtn:hover {
   background-color: hsl(346, 67%, 60%);
-  transition: background-color 0.3s;
+  transition: all 0.3s;
 }
 
 .submitbtn:active {
   background-color: hsl(346, 67%, 53%);
-  transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 

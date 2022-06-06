@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import styles from "../styles/App.module.css";
+import styles from "../styles/App.module.scss";
 import AddConnScreen from "./AddConnScreen";
 import Profile from "./Profile";
 
