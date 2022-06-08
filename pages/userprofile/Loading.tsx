@@ -1,6 +1,4 @@
-// TODO: Change username
-// TODO: change profile picture
-// TODO: (experimental) add friends
+// TODO: make a loading/buffer animation
 import styles from "../../styles/UserProfile.module.scss";
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabase";

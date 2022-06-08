@@ -4,6 +4,6 @@ import UserProfile from "./UserProfile";
 
 export default function index() {
   return (
-    <UserProfile />
+    <UserProfile id={null} />
   )
 }
