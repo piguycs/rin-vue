@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import UserProfile from "./UserProfile";
 
 
-export default function index() {
+export default function Index() {
   const router = useRouter()
   const [userid, setID] = useState<any>(null)
   useEffect(() => {
