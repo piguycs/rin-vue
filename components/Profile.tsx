@@ -15,6 +15,9 @@ export default function Profile() {
       const getstuff = async () => {
         try {
           const user = await fetch(`/api/getuser?id=${id}`);
+          if (user.status != 200) {
+            throw "anynomous user connected";
+          }
           const res = await user.json();
 
           const avatar = res.avatar_url;
