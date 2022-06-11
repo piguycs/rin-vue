@@ -26,7 +26,8 @@ export default function MessageArea() {
   const msgBox = useRef<HTMLInputElement>(null);
 
   const { username, avatar, rooms }: any = useContext(UserContext);
-  const { currRoom } = rooms;
+
+  const { currRoom } = rooms || { currRoom: "0" };
 
   socket.on("message", (msg: msgtype) => {
     console.log("hi");
@@ -48,7 +49,7 @@ export default function MessageArea() {
     };
   }, []);
 
-  const [once, toggleOnce] = useState(false)
+  const [once, toggleOnce] = useState(false);
   useEffect(() => {
     if (once) {
       socket.emit("join", currRoom);
@@ -57,7 +58,7 @@ export default function MessageArea() {
       );
     }
 
-    toggleOnce(true)
+    toggleOnce(true);
   }, [currRoom]);
 
   // this pushes the message on to the network

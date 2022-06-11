@@ -7,9 +7,9 @@ import { UserContext } from "../../utils/contexts/UserContext";
 export default function Sidebar() {
   const tooltiptext = useRef<HTMLSpanElement>(null);
   const [showConnScreen, setShowConnScreen] = useState<boolean>(false);
-  
-  const {rooms}:any = useContext(UserContext)
-  const {currRoom} = rooms
+
+  const { rooms }: any = useContext(UserContext);
+  const { currRoom } = rooms || { currRoom: "0" };
 
   var hovertimer: any;
 
@@ -26,11 +26,10 @@ export default function Sidebar() {
   // add connection button
   const addConn = (e: any) => {
     e.preventDefault();
-    
+
     // this will clear the tooltip timer
     clearTimeout(hovertimer);
     setShowConnScreen(true);
-    
   };
 
   return (

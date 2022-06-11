@@ -12,10 +12,13 @@ export default function AddConnScreen({
   setShowConnScreen,
 }: props) {
   const floating = useRef<HTMLDivElement>(null);
-  const roomInpt = useRef<HTMLInputElement>(null)
+  const roomInpt = useRef<HTMLInputElement>(null);
 
   const { rooms }: any = useContext(UserContext);
-  const { currRoom, setCurrRoom } = rooms;
+  const { currRoom, setCurrRoom } = rooms || {
+    currRoom: "0",
+    setCurrRoom: () => {},
+  };
 
   useEffect(() => {
     if (showConnScreen) {
@@ -27,8 +30,8 @@ export default function AddConnScreen({
 
   const addRoomSubmit = (e: any) => {
     e.preventDefault();
-    
-    setCurrRoom(roomInpt.current!.value)
+
+    setCurrRoom(roomInpt.current!.value);
   };
 
   return (
