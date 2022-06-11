@@ -30,7 +30,6 @@ export default function MessageArea() {
   const { currRoom } = rooms || { currRoom: "0" };
 
   socket.on("message", (msg: msgtype) => {
-    console.log("hi");
     pushMsgNet(msg);
   });
   socket.on("system", (msg) => {
@@ -117,6 +116,7 @@ export default function MessageArea() {
           className={styles.msginpt}
           placeholder="Message anyone"
           ref={msgBox}
+          maxLength={256}
         />
         <input type="submit" className={styles.sendbtn} value="SEND" />
       </form>
