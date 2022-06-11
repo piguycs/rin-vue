@@ -33,12 +33,15 @@ export default function Profile() {
 
   return (
     <div className={styles.profile}>
-      <div style={{ display: "flex"}}>
+      <div style={{ display: "flex" }}>
         <Image
           src={avatar}
           width={32}
           height={32}
-          style={{ borderRadius: "50%", visibility: isLoaded ? "visible" : "hidden" }}
+          style={{
+            borderRadius: "50%",
+            visibility: isLoaded ? "visible" : "hidden",
+          }}
         />
       </div>
       <span className="uname">{isLoaded ? username : null}</span>

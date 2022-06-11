@@ -1,12 +1,15 @@
-import { useRef, useState } from "react";
-import styles from "../styles/App.module.scss";
-import AddConnScreen from "./AddConnScreen";
-import Profile from "./Profile";
+import { useContext, useRef, useState } from "react";
+import styles from "../../styles/App.module.scss";
+import AddConnScreen from "../../components/AddConnScreen";
+import Profile from "../../components/Profile";
+import { UserContext } from "../../utils/contexts/UserContext";
 
 export default function Sidebar() {
   const tooltiptext = useRef<HTMLSpanElement>(null);
   const [showConnScreen, setShowConnScreen] = useState<boolean>(false);
   
+  const {rooms}:any = useContext(UserContext)
+  const {currRoom} = rooms
 
   var hovertimer: any;
 
@@ -23,8 +26,11 @@ export default function Sidebar() {
   // add connection button
   const addConn = (e: any) => {
     e.preventDefault();
+    
+    // this will clear the tooltip timer
     clearTimeout(hovertimer);
     setShowConnScreen(true);
+    
   };
 
   return (
@@ -50,6 +56,7 @@ export default function Sidebar() {
             Add a connection to your peers to create a message room
           </span>
         </button>
+        <span>room: {currRoom}</span>
         <Profile />
       </div>
     </>

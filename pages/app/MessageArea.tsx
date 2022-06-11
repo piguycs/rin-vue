@@ -6,7 +6,7 @@ import { UserContext } from "../../utils/contexts/UserContext";
 
 // socketio instance
 const socket = connect(process.env.NEXT_PUBLIC_BACKEND_URL, {
-  path: "/ws/socket.io",
+  // path: "/ws/socket.io",
   autoConnect: false,
 });
 
@@ -25,9 +25,11 @@ export default function MessageArea() {
 
   const msgBox = useRef<HTMLInputElement>(null);
 
-  const { username, avatar }: any = useContext(UserContext);
-  
+  const { username, avatar, rooms }: any = useContext(UserContext);
+  const { currRoom } = rooms;
+
   socket.on("message", (msg: msgtype) => {
+    console.log("hi");
     pushMsgNet(msg);
   });
   socket.on("system", (msg) => {
@@ -45,6 +47,18 @@ export default function MessageArea() {
       socket.disconnect();
     };
   }, []);
+
+  const [once, toggleOnce] = useState(false)
+  useEffect(() => {
+    if (once) {
+      socket.emit("join", currRoom);
+      console.info(
+        `disconnecting from current room and joining room ${currRoom}`
+      );
+    }
+
+    toggleOnce(true)
+  }, [currRoom]);
 
   // this pushes the message on to the network
   let pushMsgNet = async (msg: msgtype) => {

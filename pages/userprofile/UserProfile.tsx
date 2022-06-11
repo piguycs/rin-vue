@@ -7,7 +7,7 @@ import { supabase } from "../../utils/supabase";
 import { connect } from "socket.io-client";
 
 const socket = connect(process.env.NEXT_PUBLIC_BACKEND_URL, {
-  path: "/ws/socket.io",
+  // path: "/ws/socket.io",
   autoConnect: false,
 });
 export default function UserProfile({ userid }: any) {

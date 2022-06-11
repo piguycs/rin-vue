@@ -1,7 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, Dispatch, SetStateAction, useState } from "react";
 
-const [roomid, setRoomid] = useState("")
-export const RoomCtx = createContext(roomid)
+type state = {
+  room: string
+  setRoom: Dispatch<SetStateAction<string>>
+  roomList: string[]
+  setRoomList: Dispatch<SetStateAction<string[]>>
+}
 
-const [roomslist, setRoomslist] = useState([])
-export const RoomListCtx = createContext(roomslist)
+export const RoomCtx = createContext<state|null>(null)

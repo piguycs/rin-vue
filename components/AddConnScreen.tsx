@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect, useRef } from "react";
 import styles from "../styles/AddConnScreen.module.scss";
+import { UserContext } from "../utils/contexts/UserContext";
 
 type props = {
   showConnScreen: boolean;
@@ -11,6 +12,10 @@ export default function AddConnScreen({
   setShowConnScreen,
 }: props) {
   const floating = useRef<HTMLDivElement>(null);
+  const roomInpt = useRef<HTMLInputElement>(null)
+
+  const { rooms }: any = useContext(UserContext);
+  const { currRoom, setCurrRoom } = rooms;
 
   useEffect(() => {
     if (showConnScreen) {
@@ -20,9 +25,11 @@ export default function AddConnScreen({
     }
   }, [showConnScreen]);
 
-  const addRoomSubmit = (e:any) => {
-    e.preventDefault()
-  }
+  const addRoomSubmit = (e: any) => {
+    e.preventDefault();
+    
+    setCurrRoom(roomInpt.current!.value)
+  };
 
   return (
     <div ref={floating} className={styles.floating}>
@@ -36,7 +43,12 @@ export default function AddConnScreen({
           back
         </span>
         <form className={styles.roomform} onSubmit={addRoomSubmit}>
-          <input className={styles.idinpt} type="text" placeholder="Public ID" />
+          <input
+            className={styles.idinpt}
+            type="text"
+            placeholder={currRoom}
+            ref={roomInpt}
+          />
           <input className={styles.submitbtn} type="submit" value="SEARCH" />
         </form>
       </div>

@@ -7,6 +7,12 @@ type state = {
   setAvatar: Dispatch<SetStateAction<string>>
   loading: boolean
   setLoading: Dispatch<SetStateAction<boolean>>
+  rooms: {
+    currRoom:string
+    setCurrRoom: Dispatch<SetStateAction<string>>
+    roomList:string[]
+    setRoomList: Dispatch<SetStateAction<string[]>>
+  }
 };
 
 export const UserContext = createContext<state|"">("")
