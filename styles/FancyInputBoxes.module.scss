@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Fira Code";
-  src: url("../public/fonts/Fira-Code-Regular-Nerd-Font-Complete-Mono.woff") format("woff");
+  src: url("../public/fonts/Fira-Code-Regular-Nerd-Font-Complete-Mono.woff")
+    format("woff");
 }
-
 
 .input {
   position: relative;
@@ -33,7 +33,7 @@
     // background: var(--color-background);
     transition: transform 120ms ease-in;
     font-weight: 600;
-    
+
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -54,9 +54,33 @@
     // border-radius: var(--size-radius);
 
     outline: 0;
-
+    
     min-width: 22rem;
+    
+    &:focus,
+    &:not(:placeholder-shown) {
+      & + .input__label {
+        transform: translate(-0.25rem, -75%) scale(0.9);
+        color: var(--color-accent);
+      }
+    }
+  }
+  // alternate style for smaller forms
+  &__sm_field {
+    box-sizing: border-box;
+    border: 2px solid currentColor;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
+    color: currentColor;
+    background: transparent;
+    font-size: medium;
+    // border-radius: var(--size-radius);
 
+    outline: 0;
+    
+    
     &:focus,
     &:not(:placeholder-shown) {
       & + .input__label {
@@ -72,7 +96,7 @@
   right: 8px;
   top: 25%;
   cursor: pointer;
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-size: 28px;
   line-height: 26px;
 
@@ -96,16 +120,17 @@
   font-size: medium;
   margin-top: 2rem;
   cursor: pointer;
-}
 
-.submit:hover {
-  background-color: hsl(346, 67%, 60%);
-  transition: background-color 0.3s;
-}
+  &:hover {
+    background-color: hsl(346, 67%, 60%);
+    transition: background-color 0.3s;
+  }
 
-.submit:active {
-  background-color: hsl(346, 67%, 53%);
-  transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:active {
+    background-color: hsl(346, 67%, 53%);
+    transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    scale: 0.98;
+  }
 }
 
 .inputerror {

@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useContext, useEffect, useRef } from "react";
 import styles from "../styles/AddConnScreen.module.scss";
+import inputStyles from "../styles/FancyInputBoxes.module.scss";
 import { UserContext } from "../utils/contexts/UserContext";
 
 type props = {
@@ -30,8 +31,10 @@ export default function AddConnScreen({
 
   const addRoomSubmit = (e: any) => {
     e.preventDefault();
-
-    setCurrRoom(roomInpt.current!.value);
+    let value = roomInpt.current!.value.trim()
+    roomInpt.current!.value = value
+    value !== currRoom ? setCurrRoom(value || "0"):null;
+    setShowConnScreen(false);
   };
 
   return (
@@ -46,13 +49,17 @@ export default function AddConnScreen({
           back
         </span>
         <form className={styles.roomform} onSubmit={addRoomSubmit}>
-          <input
-            className={styles.idinpt}
-            type="text"
-            placeholder={currRoom}
-            ref={roomInpt}
-          />
-          <input className={styles.submitbtn} type="submit" value="SEARCH" />
+          <label className={inputStyles.input} style={{margin: 0}}>
+            <input
+              className={inputStyles.input__sm_field}
+              type="text"
+              placeholder=" "
+              ref={roomInpt}
+            />
+            <span className={inputStyles.input__label}>Room Number</span>
+          </label>
+
+          <input className={styles.submitbtn} type="submit" value="Connect" />
         </form>
       </div>
     </div>

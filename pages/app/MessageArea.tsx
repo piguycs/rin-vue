@@ -23,6 +23,10 @@ type msgtype = {
 export default function MessageArea() {
   const [messages, setMessages] = useState<JSX.Element[]>([]);
 
+  // wip - indicator for message sent/recive action
+  // useful on slow connections or during high load
+  const [msgSeRe, setMsgSeRe] = useState(false);
+
   const msgBox = useRef<HTMLInputElement>(null);
 
   const { username, avatar, rooms }: any = useContext(UserContext);
@@ -69,9 +73,6 @@ export default function MessageArea() {
       ...messages,
       <Message key={`msg_${messages.length}`} message={msg} />,
     ]);
-
-    // reset the message box
-    msgBox.current!.value = "";
   };
 
   // the function which sends message
@@ -84,6 +85,7 @@ export default function MessageArea() {
     }
     socket.emit("send_message", msg);
     // sentbyme && pushMsgNet(msg);
+    setMsgSeRe(false);
   };
 
   return (
@@ -97,8 +99,9 @@ export default function MessageArea() {
         className={styles.textbox}
         onSubmit={(e: any) => {
           e.preventDefault();
-          const value = e.target[0].value.toString();
+          const value = e.target[0].value.trim();
           if (value) {
+            setMsgSeRe(true);
             sendMessage({
               content: value,
               sender: {
@@ -106,9 +109,12 @@ export default function MessageArea() {
                 name: username,
                 id: "idk",
               },
-              room: "69420",
+              room: currRoom,
             });
+
+            // reset the message box
           }
+          e.target[0].value = "";
         }}
       >
         <input
@@ -116,7 +122,7 @@ export default function MessageArea() {
           className={styles.msginpt}
           placeholder="Message anyone"
           ref={msgBox}
-          maxLength={256}
+          maxLength={512}
         />
         <input type="submit" className={styles.sendbtn} value="SEND" />
       </form>

@@ -9,7 +9,7 @@
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-  
+
   /* flex stuff */
   justify-content: center;
   align-items: center;
@@ -20,8 +20,7 @@
   cursor: pointer;
   font-size: large;
   align-self: flex-start;
-  
-  
+
   animation-name: backlink;
   animation-duration: 0.3s;
 }
@@ -45,14 +44,13 @@
   max-height: 70%;
   height: 45rem;
   box-shadow: 0px 0px 13px hsl(238, 30%, 15%);
-  
+
   position: relative;
-  
 
   -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
+  -webkit-animation-duration: 0.1s;
   animation-name: animatetop;
-  animation-duration: 0.3s;
+  animation-duration: 0.1s;
 }
 
 .idinpt {
@@ -62,7 +60,7 @@
   border-left: 0;
   border-right: 0;
   border-color: hsl(238, 30%, 30%);
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   color: hsl(328, 100%, 94%);
 }
 
@@ -79,42 +77,45 @@
   width: 100%;
   font-weight: 600;
   box-shadow: 0px 0px 8px hsl(346, 67%, 65%);
+
+  &:hover {
+    background-color: hsl(346, 67%, 60%);
+    transition: all 0.3s;
+  }
+
+  &:active {
+    background-color: hsl(346, 67%, 53%);
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    scale: 0.98;
+  }
 }
-
-.submitbtn:hover {
-  background-color: hsl(346, 67%, 60%);
-  transition: all 0.3s;
-}
-
-.submitbtn:active {
-  background-color: hsl(346, 67%, 53%);
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {
-    top: -300px;
-    opacity: 0
+    scale: 0;
+    // top: -300px;
+    opacity: 0;
   }
 
   to {
-    top: 0;
-    opacity: 1
+    scale: 1;
+    // top: 0;
+    opacity: 1;
   }
 }
 
 @keyframes animatetop {
   from {
-    top: -300px;
-    opacity: 0
+    scale: 0;
+    // top: -300px;
+    opacity: 0;
   }
 
   to {
-    top: 0;
-    opacity: 1
+    scale: 1;
+    // top: 0;
+    opacity: 1;
   }
 }
 
@@ -122,7 +123,7 @@
   0% {
     opacity: 0;
   }
-  
+
   60% {
     opacity: 0;
   }

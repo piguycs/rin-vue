@@ -5,4 +5,8 @@
   grid-template-columns: 32px 1fr;
   gap: 7px;
   padding: 5px;
+  
+  .content {
+    word-wrap: anywhere;
+  }
 }

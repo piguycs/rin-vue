@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../../styles/repeated/Message.module.scss"
+import styles from "../../styles/repeated/Message.module.scss";
 
 type message = {
   message: {
@@ -24,7 +24,7 @@ export default function Message({ message }: message) {
           height={32}
         />
       )}
-      <div>
+      <div className={styles.content}>
         {message.sender && (
           <span style={{ fontWeight: "bold" }}>{message.sender.name}: </span>
         )}
