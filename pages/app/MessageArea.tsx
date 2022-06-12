@@ -33,13 +33,15 @@ export default function MessageArea() {
 
   const { currRoom } = rooms || { currRoom: "0" };
 
-  socket.on("message", (msg: msgtype) => {
+  // because react rerenders the components when state changes
+  // this is the best way to stop weirdness
+  socket.off("message").on("message", (msg: msgtype) => {
     pushMsgNet(msg);
   });
-  socket.on("system", (msg) => {
+  socket.off("system").on("system", (msg) => {
     console.debug(msg);
   });
-  socket.on("connect", () => {
+  socket.off("connect").on("connect", () => {
     console.info("the client has connected to the server");
   });
 
@@ -66,25 +68,26 @@ export default function MessageArea() {
 
   // this pushes the message on to the network
   let pushMsgNet = async (msg: msgtype) => {
-    // this is the object which will be sent to the shit
+    const msguid = `msg_${messages.length}`;
 
     // this adds to the end of the message pile
     setMessages([
       ...messages,
-      <Message key={`msg_${messages.length}`} message={msg} />,
+      <Message key={msguid} message={msg} />,
     ]);
+    
+    
   };
 
   // the function which sends message
   // this is the one which is triggred on the
   // input event
-  const sendMessage = (msg: msgtype, sentbyme = true) => {
+  const sendMessage = (msg: msgtype) => {
     if (username === "") {
       alert("Please enter a username");
       return;
     }
     socket.emit("send_message", msg);
-    // sentbyme && pushMsgNet(msg);
     setMsgSeRe(false);
   };
 

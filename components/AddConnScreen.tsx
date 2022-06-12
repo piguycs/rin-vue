@@ -21,9 +21,17 @@ export default function AddConnScreen({
     setCurrRoom: () => {},
   };
 
+  const mouseDown = (e: any) => {
+    if (e.target === floating.current) {
+      setShowConnScreen(false);
+      document.removeEventListener("mousedown", mouseDown);
+    }
+  };
+
   useEffect(() => {
     if (showConnScreen) {
       floating.current!.style.display = "flex";
+      document.addEventListener("mousedown", mouseDown);
     } else {
       floating.current!.style.display = "none";
     }
@@ -31,9 +39,9 @@ export default function AddConnScreen({
 
   const addRoomSubmit = (e: any) => {
     e.preventDefault();
-    let value = roomInpt.current!.value.trim()
-    roomInpt.current!.value = value
-    value !== currRoom ? setCurrRoom(value || "0"):null;
+    let value = roomInpt.current!.value.trim();
+    roomInpt.current!.value = value;
+    value !== currRoom ? setCurrRoom(value || "0") : null;
     setShowConnScreen(false);
   };
 
@@ -49,7 +57,7 @@ export default function AddConnScreen({
           back
         </span>
         <form className={styles.roomform} onSubmit={addRoomSubmit}>
-          <label className={inputStyles.input} style={{margin: 0}}>
+          <label className={inputStyles.input} style={{ margin: 0 }}>
             <input
               className={inputStyles.input__sm_field}
               type="text"
