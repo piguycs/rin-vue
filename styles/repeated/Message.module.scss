@@ -4,9 +4,34 @@
   grid-template-areas: "a b";
   grid-template-columns: 32px 1fr;
   gap: 7px;
-  padding: 5px;
-  
+  padding: 10px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: hsl(235, 25%, 15%);
+  }
+
   .content {
     word-wrap: anywhere;
+    display: grid;
+    grid-template-areas:
+      "name"
+      "content";
+  }
+
+  .msgcontent {
+    font-family: "Mada", sans-serif;
+    font-size: 17px;
+  }
+}
+
+.shprof {
+  background-color: hsl(346, 67%, 65%);
+  margin-left: 8px;
+  border-radius: 4px;
+  padding: 2px;
+  font-size: 12px;
+  &:hover {
+    background-color: hsl(346, 67%, 60%);
   }
 }

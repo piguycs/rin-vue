@@ -3,6 +3,7 @@ import styles from "../../styles/MessageArea.module.scss";
 import Message from "../../components/repeated/Message";
 import { connect } from "socket.io-client";
 import { UserContext } from "../../utils/contexts/UserContext";
+import { supabase } from "../../utils/supabase";
 
 // socketio instance
 const socket = connect(process.env.NEXT_PUBLIC_BACKEND_URL, {
@@ -22,6 +23,7 @@ type msgtype = {
 
 export default function MessageArea() {
   const [messages, setMessages] = useState<JSX.Element[]>([]);
+  const [id, setID] = useState("")
 
   // wip - indicator for message sent/recive action
   // useful on slow connections or during high load
@@ -48,6 +50,12 @@ export default function MessageArea() {
   // socketio events
   useEffect(() => {
     socket.connect();
+    
+    // user id
+    const id = supabase.auth.session()?.user?.id;
+    id ? setID(id) : console.warn("cannot get user id")
+
+
     // cleanup
     return () => {
       socket.disconnect();
@@ -110,7 +118,7 @@ export default function MessageArea() {
               sender: {
                 pfp: avatar,
                 name: username,
-                id: "idk",
+                id: id,
               },
               room: currRoom,
             });
