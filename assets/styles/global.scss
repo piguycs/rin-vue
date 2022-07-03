@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+// writing basic css to be used for common elements
+.primary-btn {
+  background-color: hsl(346, 67%, 65%);
+  color: hsl(328, 100%, 94%);
+  border: hsla(0, 0%, 0%, 0);
+  box-shadow: 0px 0px 8px hsl(346, 67%, 65%);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background-color: hsl(346, 67%, 60%);
+    transition: background-color 0.3s;
+  }
+
+  &:active {
+    background-color: hsl(346, 67%, 53%);
+    transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: scale(0.95);
+  }
+}
+
+
+.input {
+  position: relative;
+  $size-bezel: 0.5rem;
+  $size-radius: 4px;
+  margin: 14px;
+
+  cursor: text;
+  
+  font-family: 'Inter';
+
+  &--label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: calc($size-bezel * 0.75) calc($size-bezel * 0.5);
+    margin: calc($size-bezel * 0.75 + 3px) calc($size-bezel * 0.5);
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    transition: transform 120ms ease-in;
+    font-weight: 600;
+
+    user-select: none;
+  }
+  &--field {
+    box-sizing: border-box;
+    border: 2px solid currentColor;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding: calc($size-bezel * 1.5) $size-bezel;
+    color: currentColor;
+    background: transparent;
+    font-size: medium;
+
+    outline: 0;
+    
+    min-width: 22rem;
+    
+    &:focus,
+    &:not(:placeholder-shown) {
+      & + .input--label {
+        transform: translate(-0.25rem, -75%) scale(0.9);
+        color: $accent-light;
+      }
+    }
+  }
+}
