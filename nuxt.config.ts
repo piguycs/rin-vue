@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
+  modules: ["@nuxtjs/supabase"],
   vite: {
     css: {
       preprocessorOptions: {

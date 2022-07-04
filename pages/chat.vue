@@ -1,5 +1,5 @@
 <template>
-  <div class="root" :class="sidebarOptions.full ? 'full' : 'compact'">
+  <div class="chatroot" :class="sidebarOptions.full ? 'full' : 'compact'">
     <Sidebar
       :full="sidebarOptions.full"
       @change-style="sidebarOptions.full = !sidebarOptions.full"
@@ -18,7 +18,7 @@ const sidebarOptions = ref({
 </script>
 
 <style lang="scss" scoped>
-.root {
+.chatroot {
   color: $fg-1;
   background-color: $bg-1;
 

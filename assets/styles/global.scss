@@ -8,23 +8,29 @@ body {
 
 // writing basic css to be used for common elements
 .primary-btn {
-  background-color: hsl(346, 67%, 65%);
+  background-color: $accent-1;
   color: hsl(328, 100%, 94%);
   border: hsla(0, 0%, 0%, 0);
-  box-shadow: 0px 0px 8px hsl(346, 67%, 65%);
+  box-shadow: 0px 0px 8px $accent-1;
   font-weight: 600;
   cursor: pointer;
 
   &:hover {
-    background-color: hsl(346, 67%, 60%);
+    background-color: $accent-2;
     transition: background-color 0.3s;
   }
 
   &:active {
-    background-color: hsl(346, 67%, 53%);
+    background-color: $accent-3;
     transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     transform: scale(0.95);
   }
+  
+  &:disabled {
+    background-color: hsl(0, 0%, 34%);
+    box-shadow: none;
+  }
+
 }
 
 

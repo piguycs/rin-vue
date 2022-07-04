@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model invites {
+  invite_key    String    @id @unique
+  creation      DateTime  @default(now()) @db.Timestamp(6)
+  expire        DateTime? @db.Timestamp(6)
+  desc          String?
+  created_by    String?
+  max_uses      Int       @default(1)
+  created_users String[]
+}
+
+model profiles {
+  // this is a foreign key in the real schema
+  // but for now this should work for basic querying
+  // as I wont be modifying the table this key is from anyways
+  id         String   @id @unique
+  username   String
+  avatar_url String?
+  desc       String?
+  friends    String[]
+  badges     String[]
+}

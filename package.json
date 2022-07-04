@@ -7,11 +7,13 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@nuxtjs/supabase": "^0.1.18",
     "nuxt": "3.0.0-rc.4",
     "sass-loader": "^13.0.2"
   },
   "dependencies": {
     "@prisma/client": "^4.0.0",
+    "@supabase/supabase-js": "^1.35.4",
     "sass": "^1.53.0"
   }
 }
