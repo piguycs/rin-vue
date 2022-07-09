@@ -1,43 +1,47 @@
 <template>
-  <div class="sidebar--full" v-if="props.full">
-    <button class="primary-btn btn" @click="$emit('change-style')">
-      Add Connection
+  <div class="sidebar--full">
+    <button class="fancy-btn btn" @click="$emit('add-connection')">
+      Support Us ❤
     </button>
 
     <div>
-      {{ props.full }}
+      <span>room: {{ 0 }}</span>
     </div>
     <div class="profile">
+      <img class="pfp" :src="userProfile.pfp" v-if="user">
       <span>
-        {{ options.user }}
+        {{ user ? userProfile.name : "Login" }}
       </span>
     </div>
-  </div>
-  <div class="sidebar--compact" v-else>
-    <button class="primary-btn btn" @click="$emit('change-style')">Add</button>
-    <span>smol</span>
-    <div class="profile">
-      pfp
-    </div>
-
   </div>
 </template>
 
 <script lang="ts" setup>
-interface optionst {
-  user: string;
-  full: boolean;
-}
+const user = useSupabaseUser()
+const userProfile = ref({
+  pfp: "",
+  name: ""
+})
 
-const options: optionst = reactive({
-  user: "thepiguy",
-  full: true,
+watchEffect(async () => {
+  if (user.value) {
+    const id = user.value.id;
+    const profile = (
+      await $fetch("/api/profile", { params: { id } })
+    ).profile
+    userProfile.value = {
+      pfp: profile.avatar_url,
+      name: profile.username
+    }
+  }
 });
 
-const props = defineProps(["full"]);
+
 </script>
 
 <style lang="scss">
+@import "assets/styles/fancy-elements.scss";
+
 .sidebar {
   background-color: $bg-2;
 
@@ -51,13 +55,7 @@ const props = defineProps(["full"]);
 
   &--full {
     @extend .sidebar;
-    margin: 17px 20px 12px;
-    border-radius: 12px;
-    padding: 12px;
-  }
-
-  &--compact {
-    @extend .sidebar;
+    box-shadow: 0px 0px 16px $bg-2;
     margin: 17px 20px 12px;
     border-radius: 12px;
     padding: 12px;
@@ -66,7 +64,6 @@ const props = defineProps(["full"]);
 
 .btn {
   border-radius: 4px;
-  margin: 4px;
   height: 33px;
 }
 
@@ -81,5 +78,11 @@ const props = defineProps(["full"]);
   display: grid;
   grid-template-areas: "pfp name";
   align-items: center;
+  grid-template-columns: 44px 1fr;
+}
+
+.pfp {
+  width: 36px;
+  border-radius: 50%;
 }
 </style>

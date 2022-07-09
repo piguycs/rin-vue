@@ -1,0 +1,17 @@
+.fancy-btn {
+  background-color: $accent-1;
+  color: $fg-1;
+  border: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    box-shadow: 0 0 5px $accent-1;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+
+}

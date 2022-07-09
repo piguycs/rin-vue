@@ -4,11 +4,13 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "postinstall": "prisma generate"
   },
   "devDependencies": {
     "@nuxtjs/supabase": "^0.1.18",
     "nuxt": "3.0.0-rc.4",
+    "prisma": "^4.0.0",
     "sass-loader": "^13.0.2"
   },
   "dependencies": {

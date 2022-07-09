@@ -1,20 +1,17 @@
 <template>
-  <div class="chatroot" :class="sidebarOptions.full ? 'full' : 'compact'">
+  <div class="chatroot" :class="sideBarFull ? 'full' : 'compact'">
     <Sidebar
-      :full="sidebarOptions.full"
-      @change-style="sidebarOptions.full = !sidebarOptions.full"
+      :full="sideBarFull"
     />
     <div class="chat">
-      {{ sidebarOptions.full }}
+      <span>{{ sideBarFull }}</span>
       <input class="message-box" placeholder="Send a message" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const sidebarOptions = ref({
-  full: true,
-});
+const sideBarFull = ref(true);
 </script>
 
 <style lang="scss" scoped>
