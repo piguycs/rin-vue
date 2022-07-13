@@ -1,8 +1,6 @@
 <template>
   <div class="chatroot" :class="sideBarFull ? 'full' : 'compact'">
-    <Sidebar
-      :full="sideBarFull"
-    />
+    <Sidebar :full="sideBarFull" />
     <div class="chat">
       <span>{{ sideBarFull }}</span>
       <input class="message-box" placeholder="Send a message" />
@@ -45,6 +43,7 @@ const sideBarFull = ref(true);
   border: 0;
   color: $fg-1;
   font-size: 18px;
-}
 
+  font-family: "Libre Franklin";
+}
 </style>
