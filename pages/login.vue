@@ -54,20 +54,22 @@
 <script lang="ts" setup>
 import { User } from "@firebase/auth";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
-import { initializeApp } from "@firebase/app";
+import { initializeApp, getApps } from "@firebase/app";
 
-const config = useRuntimeConfig()
-const app = initializeApp({
-  apiKey: config.APIKEY
-})
+if (getApps().length === 0) {
+  const config = useRuntimeConfig();
+  console.log("Firebase app not found, initialising it now");
+  initializeApp({
+    apiKey: config.APIKEY,
+  });
+}
 
-const auth = getAuth()
-
+const auth = getAuth();
 
 const user = ref<User>(auth.currentUser);
 onAuthStateChanged(auth, (e) => {
-  user.value = e
-})
+  user.value = e;
+});
 
 const router = useRouter();
 
@@ -168,6 +170,7 @@ async function loginHandler(e: SubmitEvent) {
 
   h1 {
     margin-top: 4rem;
+
     .fancy-text {
       color: $accent-1;
     }
@@ -195,6 +198,7 @@ async function loginHandler(e: SubmitEvent) {
     }
   }
 }
+
 .loggedin {
   display: flex;
   gap: 0;
@@ -205,6 +209,7 @@ async function loginHandler(e: SubmitEvent) {
     font-size: 22px;
     font-weight: 600;
   }
+
   img {
     width: 256px;
     aspect-ratio: 1/1;
@@ -214,18 +219,22 @@ async function loginHandler(e: SubmitEvent) {
     padding: 8px;
     border: 10px solid $accent-light;
   }
+
   img.disabled {
     border: 10px solid hsl(0, 0%, 34%);
   }
+
   h1 {
     margin-top: 2rem;
   }
+
   .btn2 {
     margin-top: auto;
     height: 40px;
     border-radius: 4px;
     width: 50%;
   }
+
   .bottom-element {
     margin-bottom: 8rem;
   }
