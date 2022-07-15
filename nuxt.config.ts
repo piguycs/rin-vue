@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  modules: ["@nuxtjs/supabase"],
+  modules: [],
   vite: {
     css: {
       preprocessorOptions: {
@@ -15,4 +15,12 @@ export default defineNuxtConfig({
       },
     },
   },
+  publicRuntimeConfig: {
+    APIKEY: process.env.APIKEY,
+    PROJECTID: process.env.PROJECTID
+  },
+  privateRuntimeConfig: {
+    APIKEY: process.env.APIKEY,
+    PROJECTID: process.env.PROJECTID
+  }
 });

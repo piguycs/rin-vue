@@ -6,7 +6,7 @@
         <NuxtLink to="/">Home</NuxtLink>
         <NuxtLink to="/" :class="'notin'">Pricing</NuxtLink>
         <NuxtLink to="/" class="notin">Join</NuxtLink>
-        <NuxtLink to="/chat" v-if="user" class="open-app">Open App</NuxtLink>
+        <NuxtLink to="/chat" v-if="false" class="open-app">Open App</NuxtLink>
         <NuxtLink to="/login" v-else class="notin">Login</NuxtLink>
       </span>
     </nav>
@@ -14,7 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-const user = useSupabaseUser();
 </script>
 
 <style lang="scss" scoped>

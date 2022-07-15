@@ -1,31 +1,17 @@
 <template>
     <div class="profile">
-      <img class="pfp" :src="userProfile.pfp" v-if="user">
+      <img class="pfp" :src="userProfile.pfp" v-if="true">
       <span>
-        {{ user ? userProfile.name : "Login" }}
+        {{ "Login" }}
       </span>
     </div>
 </template>
 
 <script lang="ts" setup>
-const user = useSupabaseUser()
 const userProfile = ref({
   pfp: "",
   name: ""
 })
-
-watchEffect(async () => {
-  if (user.value) {
-    const id = user.value.id;
-    const profile = (
-      await $fetch("/api/profile", { params: { id } })
-    ).profile
-    userProfile.value = {
-      pfp: profile.avatar_url,
-      name: profile.username
-    }
-  }
-});
 </script>
 
 <style lang="scss" scoped>

@@ -4,18 +4,14 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "prisma generate"
+    "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@nuxtjs/supabase": "^0.1.18",
     "nuxt": "3.0.0-rc.4",
-    "prisma": "^4.0.0",
     "sass-loader": "^13.0.2"
   },
   "dependencies": {
-    "@prisma/client": "^4.0.0",
-    "@supabase/supabase-js": "^1.35.4",
+    "firebase": "^9.9.0",
     "sass": "^1.53.0"
   }
 }

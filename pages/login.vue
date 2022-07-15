@@ -29,7 +29,7 @@
       </form>
     </div>
     <!-- Show the profile -->
-    <div class="form loggedin" v-else-if="options.profile.username">
+    <div class="form loggedin" v-else="options.profile.username">
       <span>Signed in as</span>
       <img :src="options.profile.avatar_url" alt="pfp" />
       <h1>{{ options.profile.username }}</h1>
@@ -41,7 +41,7 @@
       </button>
     </div>
     <!-- Disabled -->
-    <div class="form loggedin" v-else>
+    <div class="form loggedin" v-if="false">
       <span>Signed in as</span>
       <img class="disabled" :src="options.profile.avatar_url" />
       <h1>Loading...</h1>
@@ -52,8 +52,17 @@
 </template>
 
 <script lang="ts" setup>
-const client = useSupabaseClient();
-const user = useSupabaseUser();
+import { User } from "@firebase/auth";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+
+const auth = getAuth()
+
+
+const user = ref<User>(auth.currentUser);
+onAuthStateChanged(auth, (e) => {
+  user.value = e
+})
+
 const router = useRouter();
 
 interface opt {
@@ -68,10 +77,10 @@ let options: opt = reactive({
 watchEffect(async () => {
   if (user.value) {
     options.isLoggedIn = true;
-    const id = user.value.id;
-    options.profile = (
-      await $fetch("/api/profile", { params: { id } })
-    ).profile;
+    options.profile = {
+      avatar_url: user.value.photoURL,
+      username: user.value.displayName,
+    };
   } else {
     options.isLoggedIn = false;
   }
@@ -85,16 +94,18 @@ function proceed() {
 }
 
 async function login(email: string, password: string) {
-  const { error } = await client.auth.signIn({ email, password });
-
-  if (error) {
-    throw error;
+  try {
+    const { user: fbUser } = await signInUser(email, password);
+    user.value = fbUser;
+    console.log(auth.currentUser)
+  } catch (e) {
+    throw e;
   }
 }
 
 async function logout() {
   try {
-    await client.auth.signOut();
+    await signOutUser();
   } catch (e) {
     console.error(e);
   }
