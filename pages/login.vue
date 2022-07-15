@@ -54,6 +54,12 @@
 <script lang="ts" setup>
 import { User } from "@firebase/auth";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { initializeApp } from "@firebase/app";
+
+const config = useRuntimeConfig()
+const app = initializeApp({
+  apiKey: config.APIKEY
+})
 
 const auth = getAuth()
 
@@ -97,7 +103,6 @@ async function login(email: string, password: string) {
   try {
     const { user: fbUser } = await signInUser(email, password);
     user.value = fbUser;
-    console.log(auth.currentUser)
   } catch (e) {
     throw e;
   }
