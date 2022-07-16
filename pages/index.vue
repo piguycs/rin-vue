@@ -5,7 +5,7 @@
       <span class="navigations">
         <NuxtLink to="/">Home</NuxtLink>
         <NuxtLink to="/" :class="'notin'">Pricing</NuxtLink>
-        <NuxtLink to="/" class="notin">Join</NuxtLink>
+        <NuxtLink to="/join" class="notin">Join</NuxtLink>
         <NuxtLink to="/chat" v-if="false" class="open-app">Open App</NuxtLink>
         <NuxtLink to="/login" v-else class="notin">Login</NuxtLink>
       </span>
