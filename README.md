@@ -1,13 +1,6 @@
 # Rin Chat web client
 
-This is the web client to access the rin chat network. Set `.env.local` and `./prisma/.env` with the required variables described in the respective `example.env` files
-
-Tested with node 18.2
-
-```bash
-$ node -v
-v18.2.0
-```
+An open source real time chat application written in nuxt 3.
 
 ## Screenshots
 
@@ -16,27 +9,20 @@ v18.2.0
 
 ## Tech Stack
 
-- NextJS
-- PostgresSQL and Prisma
-- Supabase
-- SocketIO
-- Backend can be anything, but on the official Rin network its node + express
-
-## API Documentation
-
-(tbd)
+- Nuxt 3
+- Firebase Firestore
+- Copious amounts of chocolate, this is a coffee free dev enviornment
 
 ## Contributors
 
 - Kunal (me)
-- @HUSKI3 (backend, in the works)
 
 ## Hosting
 
-This web client is hosted on vercel and can easily be deployed
-
-### Self hosting can require some setup when using vercel edge functions, but I am not using them for this (yet). I have never tried self hosting next js so I wont be abele to provide assistance, but it should be not too difficult and there are resources online
+This web client can be hosted on any hosting service. For more info check the [nuxt documentation](https://v3.nuxtjs.org/guide/deploy/presets)
 
 ## License
+
+Third party licenses in `project-licenses.json`
 
 Copyright © 2022, [Kunal Dandekar](https://github.com/RocKing1001). Released under the [MIT license](LICENSE).
