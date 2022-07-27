@@ -17,10 +17,12 @@ export default defineNuxtConfig({
   },
   publicRuntimeConfig: {
     APIKEY: process.env.APIKEY,
-    PROJECTID: process.env.PROJECTID
+    PROJECTID: process.env.PROJECTID,
+    STORAGEBUCKET: process.env.STORAGEBUCKET
   },
   privateRuntimeConfig: {
     APIKEY: process.env.APIKEY,
-    PROJECTID: process.env.PROJECTID
+    PROJECTID: process.env.PROJECTID,
+    STORAGEBUCKET: process.env.STORAGEBUCKET
   }
 });

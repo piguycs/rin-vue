@@ -1,49 +1,11 @@
 <template>
+  <!-- SVG LOADERS FROM https://samherbert.net/svg-loaders/ -->
   <div class="form">
-    <h1>
-      {{ props.headingNormal }}
-      <span class="fancy-text">{{ props.headingHighlight }}</span>
-    </h1>
-    <form @submit="submitEvent">
-      <label
-        class="input"
-        v-for="i in props.inputs"
-        :style="`padding-bottom: ${props.spacer}rem;`"
-      >
-        <input
-          class="input--field"
-          :type="i.type"
-          placeholder=" "
-          v-model="i.ref.value"
-        />
-        <span class="input--label">{{ i.name }}</span>
-      </label>
-      <label>
-        <input
-          type="submit"
-          class="primary-btn btn"
-          :value="props.submitText"
-        />
-      </label>
-    </form>
+    <img class="loader" src="assets/puff.svg" alt="loading">
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Ref } from "vue";
-
-const props = defineProps<{
-  headingNormal: string;
-  headingHighlight: string;
-  inputs: {
-    ref: Ref<string>;
-    name: string;
-    type?: string;
-  }[];
-  spacer?: number;
-  submitText: string;
-  submitEvent: (e: Event) => {};
-}>();
 </script>
 
 <style lang="scss" scoped>
@@ -58,6 +20,11 @@ const props = defineProps<{
   grid-template-areas: "o a b";
 }
 
+img.loader {
+  aspect-ratio: 1/1;
+  height: 14%;
+}
+
 .form {
   background-color: $bg-1;
   box-shadow: 0 0 13px lighten($color: $bg-1, $amount: 5);
@@ -70,11 +37,9 @@ const props = defineProps<{
 
   border-radius: 8px;
   padding: 20px;
-  display: flex;
+  display: grid;
+  place-items: center;
 
-  align-items: center;
-  flex-direction: column;
-  gap: 5rem;
 
   grid-area: a;
 

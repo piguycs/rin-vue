@@ -11,42 +11,55 @@
 
     <label for="pfp">
       <span>Profile Picture URL</span>
-      <input type="url" name="pfp" />
+      <input type="url" name="pfp" v-model="pfp" />
     </label>
 
     <input type="submit" value="Submit" />
-    
+
     <NuxtLink href="/login">login page</NuxtLink>
   </form>
 </template>
 
 <script lang="ts" setup>
-import { getAuth, onAuthStateChanged, User } from "@firebase/auth";
+import { User } from "@firebase/auth";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { initializeApp, getApps } from "@firebase/app";
 
-const user = ref<User>();
+const user = ref<User | null>(null);
 
+onMounted(() => {
+  if (getApps().length === 0) {
+    const config = useRuntimeConfig();
+    // console.log("Firebase app not found, initialising it now");
+    initializeApp({
+      apiKey: config.APIKEY,
+    });
+  }
 
-onAuthStateChanged(getAuth(), (e) => {
-  user.value = e;
+  const auth = getAuth();
+
+  user.value = auth.currentUser;
+  onAuthStateChanged(auth, (e) => {
+    user.value = e;
+  });
 });
 
 const username = ref("");
 const pfp = ref("");
-
 
 async function updateUserProfile(e: Event) {
   e.preventDefault();
 
   try {
     await updateUser(username.value, pfp.value);
-
+    console.log(username.value, pfp.value);
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 form {
   display: flex;
   flex-direction: column;

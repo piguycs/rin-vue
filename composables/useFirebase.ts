@@ -77,6 +77,8 @@ export const updateUser = async (
     photoURL,
   };
 
+  console.log(toUpd);
+
   await updateProfile(user, toUpd);
   console.info(`updated user`);
 };

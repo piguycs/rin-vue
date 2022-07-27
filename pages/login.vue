@@ -1,37 +1,11 @@
 <template>
   <div class="root">
     <!-- Login Form -->
-    <div class="form" v-if="!options.isLoggedIn">
-      <h1>Sign in to <span class="fancy-text">start chatting</span></h1>
-      <form @submit="loginHandler">
-        <label class="input">
-          <input
-            class="input--field"
-            type="email"
-            placeholder=" "
-            v-model="inputEmail"
-          />
-          <span class="input--label">Email</span>
-        </label>
-        <label class="input">
-          <input
-            class="input--field"
-            type="password"
-            placeholder=" "
-            v-model="inputPassword"
-          />
-          <span class="input--label">Password</span>
-        </label>
-
-        <label>
-          <input type="submit" class="primary-btn btn" value="Login" />
-        </label>
-      </form>
-    </div>
+    <Form v-bind="formEmailPassword" v-if="!options.isLoggedIn" />
     <!-- Show the profile -->
     <div class="form loggedin" v-else="options.profile.username">
       <span>Signed in as</span>
-      <img :src="options.profile.avatar_url" alt="pfp" />
+      <img :src="options.profile.avatar_url" />
       <h1>{{ options.profile.username }}</h1>
       <button class="primary-btn btn2" @click="proceed()">
         Proceed to the app
@@ -56,21 +30,7 @@ import { User } from "@firebase/auth";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { initializeApp, getApps } from "@firebase/app";
 
-if (getApps().length === 0) {
-  const config = useRuntimeConfig();
-  console.log("Firebase app not found, initialising it now");
-  initializeApp({
-    apiKey: config.APIKEY,
-  });
-}
-
-const auth = getAuth();
-
-const user = ref<User>(auth.currentUser);
-onAuthStateChanged(auth, (e) => {
-  user.value = e;
-});
-
+const user = ref<User | null>(null);
 const router = useRouter();
 
 interface opt {
@@ -92,6 +52,24 @@ watchEffect(async () => {
   } else {
     options.isLoggedIn = false;
   }
+});
+
+onMounted(() => {
+  if (getApps().length === 0) {
+    const config = useRuntimeConfig();
+    // console.log("Firebase app not found, initialising it now");
+    initializeApp({
+      apiKey: config.APIKEY,
+    });
+  }
+
+  const auth = getAuth();
+
+  user.value = auth.currentUser;
+  onAuthStateChanged(auth, (e) => {
+    user.value = e;
+    console.log(user.value.photoURL)
+  });
 });
 
 let inputEmail = ref("");
@@ -132,6 +110,27 @@ async function loginHandler(e: SubmitEvent) {
     alert(e.message);
   }
 }
+
+onMounted(() => {});
+
+const formEmailPassword = {
+  headingNormal: "Sign in to",
+  headingHighlight: "start chatting",
+  inputs: [
+    {
+      ref: inputEmail,
+      name: "Email",
+      type: "email",
+    },
+    {
+      ref: inputPassword,
+      name: "Password",
+      type: "password",
+    },
+  ],
+  submitText: "Sign In",
+  submitEvent: loginHandler,
+};
 </script>
 
 <style lang="scss" scoped>
@@ -162,7 +161,6 @@ async function loginHandler(e: SubmitEvent) {
 
   align-items: center;
   flex-direction: column;
-  gap: 7rem;
 
   grid-area: a;
 

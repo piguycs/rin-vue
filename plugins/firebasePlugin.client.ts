@@ -1,32 +1,13 @@
-import { initializeApp, getApps } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "@firebase/firestore";
+// firebase.client.ts
+import { getApps, initializeApp } from "firebase/app";
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
-
   const firebaseConfig = {
     apiKey: config.APIKEY,
+    projectId: config.PROJECTID,
+    storageBucket: config.STORAGEBUCKET,
   };
-
-  // Initialize Firebase
-  
-  if (getApps().length > 0) {
-    return
-  }
-
-  const app = initializeApp(firebaseConfig);
-  
-  initUser()
-
-  const auth = getAuth(app)
-  const firestore = getFirestore(app)
-
-  return {
-    provide: {
-      auth,
-      firestore
-    }
-  }
-
+  const apps = getApps();
+  const app = apps[0] ? apps[0] : initializeApp(firebaseConfig);
 });

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "firebase": "^9.9.0",
+    "firebase-admin": "^11.0.0",
     "sass": "^1.53.0"
   }
 }
