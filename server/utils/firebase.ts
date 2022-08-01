@@ -3,8 +3,11 @@ import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
 
+const config = useRuntimeConfig();
+const serviceAccount = JSON.parse(config.SERVICEACCOUNT);
+
 export const app = initializeApp({
-  credential: cert("./service-account.json"),
+  credential: cert(serviceAccount),
   storageBucket: "rin-backend.appspot.com",
 });
 

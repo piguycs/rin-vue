@@ -110,4 +110,28 @@ const props = defineProps<{
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .form {
+    min-width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-height: 47rem) {
+  .form {
+    min-width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .root {
+    background-image: none;
+    background-color: $bg-1;
+  }
+}
 </style>
