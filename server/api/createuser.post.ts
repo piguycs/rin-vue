@@ -1,8 +1,12 @@
 import { checkCode } from "../utils/usertools";
+import { auth } from "../utils/firebase";
 
 export default defineEventHandler(async (event) => {
   const { email, password, username, code } = await useBody(event);
-  const pfp = `https://avatars.dicebear.com/api/croodles/${username}.svg`;
+  const pfp = `https://avatars.dicebear.com/api/croodles/${username.replace(
+    / /g,
+    "_"
+  )}.svg`;
 
   try {
     // check if invite code is valid
@@ -24,17 +28,20 @@ export default defineEventHandler(async (event) => {
     }
 
     inviteCheck() && usernameCheck();
-    
 
-    return {
+    const user = await auth.createUser({
+      displayName: username,
       email,
       password,
-      username,
-      code,
-      pfp,
+      photoURL: pfp,
+    });
+
+    return {
+      success: true,
     };
   } catch (e) {
+    console.log(e);
     event.res.statusCode = 400;
-    return { error: e };
+    return { success: false, error: e };
   }
 });

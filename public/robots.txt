@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /api/doctor
+Disallow: /api/*
+Disallow: /app

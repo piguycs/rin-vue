@@ -99,6 +99,12 @@ async function joinHandler(e) {
     method: "POST",
   });
   showLoad.value.load = false;
+  if (res.success) {
+    await signInUser(inputEmail.value, inputPassword.value);
+    useRouter().push("/login");
+  } else {
+    alert(res.error);
+  }
 
   // console.log(res);
 }

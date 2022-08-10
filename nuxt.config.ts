@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  modules: [],
   vite: {
     css: {
       preprocessorOptions: {
