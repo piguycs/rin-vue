@@ -117,6 +117,12 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "@babel/helper-string-parser": {
+        "licenses": "MIT",
+        "repository": "https://github.com/babel/babel",
+        "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "@babel/helper-validator-identifier": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
@@ -199,6 +205,12 @@
         "licenses": "MIT OR Apache-2.0",
         "repository": "https://github.com/cloudflare/kv-asset-handler",
         "licenseUrl": "https://github.com/cloudflare/kv-asset-handler/raw/master/LICENSE_APACHE",
+        "parents": "UNDEFINED"
+    },
+    "@fastify/busboy": {
+        "licenses": "MIT",
+        "repository": "https://github.com/fastify/busboy",
+        "licenseUrl": "https://github.com/fastify/busboy/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "@firebase/analytics-compat": {
@@ -459,6 +471,36 @@
         "licenseUrl": "https://github.com/firebase/firebase-js-sdk",
         "parents": "UNDEFINED"
     },
+    "@google-cloud/firestore": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/nodejs-firestore",
+        "licenseUrl": "https://github.com/googleapis/nodejs-firestore/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@google-cloud/paginator": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/nodejs-paginator",
+        "licenseUrl": "https://github.com/googleapis/nodejs-paginator/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@google-cloud/projectify": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/nodejs-projectify",
+        "licenseUrl": "https://github.com/googleapis/nodejs-projectify/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@google-cloud/promisify": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/nodejs-promisify",
+        "licenseUrl": "https://github.com/googleapis/nodejs-promisify/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@google-cloud/storage": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/nodejs-storage",
+        "licenseUrl": "https://github.com/googleapis/nodejs-storage/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "@grpc/grpc-js": {
         "licenses": "Apache-2.0",
         "repository": "https://github.com/grpc/grpc-node/tree/master/packages/grpc-js",
@@ -469,7 +511,7 @@
         "licenses": "Apache-2.0",
         "repository": "https://github.com/grpc/grpc-node",
         "licenseUrl": "https://github.com/grpc/grpc-node/raw/master/LICENSE",
-        "parents": "UNDEFINED"
+        "parents": "@grpc/grpc-js:UNDEFINED"
     },
     "@ioredis/commands": {
         "licenses": "MIT",
@@ -577,6 +619,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/nuxt/framework",
         "licenseUrl": "https://github.com/nuxt/framework",
+        "parents": "UNDEFINED"
+    },
+    "@panva/asn1.js": {
+        "licenses": "MIT",
+        "repository": "https://github.com/panva/asn1.js",
+        "licenseUrl": "https://github.com/panva/asn1.js/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "@protobufjs/aspromise": {
@@ -687,10 +735,28 @@
         "licenseUrl": "https://github.com/rollup/plugins",
         "parents": "unimport:UNDEFINED"
     },
+    "@tootallnate/once": {
+        "licenses": "MIT",
+        "repository": "https://github.com/TooTallNate/once",
+        "licenseUrl": "https://github.com/TooTallNate/once/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "@trysound/sax": {
         "licenses": "ISC",
         "repository": "https://github.com/svg/sax",
         "licenseUrl": "https://github.com/svg/sax/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@types/body-parser": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@types/connect": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "@types/estree": {
@@ -699,7 +765,25 @@
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "is-reference:UNDEFINED"
     },
+    "@types/express-serve-static-core": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@types/express": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "@types/jsdom": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@types/jsonwebtoken": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
@@ -711,19 +795,37 @@
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "@types/mime": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "@types/node": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "@types/parse5": {
+    "@types/qs": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@types/range-parser": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "@types/resolve": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "@types/serve-static": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
@@ -841,6 +943,12 @@
         "licenseUrl": "http://github.com/isaacs/abbrev-js/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "abort-controller": {
+        "licenses": "MIT",
+        "repository": "https://github.com/mysticatea/abort-controller",
+        "licenseUrl": "https://github.com/mysticatea/abort-controller/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "acorn": {
         "licenses": "MIT",
         "repository": "https://github.com/acornjs/acorn",
@@ -853,29 +961,23 @@
         "licenseUrl": "https://github.com/TooTallNate/node-agent-base",
         "parents": "UNDEFINED"
     },
-    "ajv": {
-        "licenses": "MIT",
-        "repository": "https://github.com/ajv-validator/ajv",
-        "licenseUrl": "https://github.com/ajv-validator/ajv/raw/master/LICENSE",
-        "parents": "UNDEFINED"
-    },
     "ansi-escapes": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/ansi-escapes",
         "licenseUrl": "https://github.com/sindresorhus/ansi-escapes/raw/master/license",
-        "parents": "UNDEFINED"
+        "parents": "inquirer:UNDEFINED"
     },
     "ansi-regex": {
         "licenses": "MIT",
         "repository": "https://github.com/chalk/ansi-regex",
         "licenseUrl": "https://github.com/chalk/ansi-regex/raw/master/license",
-        "parents": "UNDEFINED"
+        "parents": "ora:UNDEFINED"
     },
     "ansi-styles": {
         "licenses": "MIT",
         "repository": "https://github.com/chalk/ansi-styles",
         "licenseUrl": "https://github.com/chalk/ansi-styles/raw/master/license",
-        "parents": "UNDEFINED"
+        "parents": "inquirer:UNDEFINED"
     },
     "anymatch": {
         "licenses": "ISC",
@@ -913,10 +1015,22 @@
         "licenseUrl": "https://github.com/npm/are-we-there-yet/raw/master/LICENSE.md",
         "parents": "UNDEFINED"
     },
-    "astral-regex": {
+    "arrify": {
         "licenses": "MIT",
-        "repository": "https://github.com/kevva/astral-regex",
-        "licenseUrl": "https://github.com/kevva/astral-regex/raw/master/license",
+        "repository": "https://github.com/sindresorhus/arrify",
+        "licenseUrl": "https://github.com/sindresorhus/arrify/raw/master/license",
+        "parents": "UNDEFINED"
+    },
+    "async-retry": {
+        "licenses": "MIT",
+        "repository": "https://github.com/vercel/async-retry",
+        "licenseUrl": "https://github.com/vercel/async-retry/raw/master/LICENSE.md",
+        "parents": "UNDEFINED"
+    },
+    "async-sema": {
+        "licenses": "MIT",
+        "repository": "https://github.com/vercel/async-sema",
+        "licenseUrl": "https://github.com/vercel/async-sema/raw/master/license.md",
         "parents": "UNDEFINED"
     },
     "async": {
@@ -943,6 +1057,12 @@
         "licenseUrl": "https://github.com/beatgammit/base64-js/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "bignumber.js": {
+        "licenses": "MIT",
+        "repository": "https://github.com/MikeMcl/bignumber.js",
+        "licenseUrl": "https://github.com/MikeMcl/bignumber.js/raw/master/LICENCE.md",
+        "parents": "UNDEFINED"
+    },
     "binary-extensions": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/binary-extensions",
@@ -959,7 +1079,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/rvagg/bl",
         "licenseUrl": "https://github.com/rvagg/bl/raw/master/LICENSE.md",
-        "parents": "UNDEFINED"
+        "parents": "ora:UNDEFINED"
     },
     "boolbase": {
         "licenses": "ISC",
@@ -991,6 +1111,12 @@
         "licenseUrl": "https://github.com/brianloveswords/buffer-crc32/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "buffer-equal-constant-time": {
+        "licenses": "BSD-3-Clause",
+        "repository": "https://github.com/goinstant/buffer-equal-constant-time",
+        "licenseUrl": "https://github.com/goinstant/buffer-equal-constant-time/raw/master/LICENSE.txt",
+        "parents": "UNDEFINED"
+    },
     "buffer-from": {
         "licenses": "MIT",
         "repository": "https://github.com/LinusU/buffer-from",
@@ -1001,7 +1127,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/feross/buffer",
         "licenseUrl": "https://github.com/feross/buffer/raw/master/LICENSE",
-        "parents": "UNDEFINED"
+        "parents": "ora:UNDEFINED"
     },
     "builtin-modules": {
         "licenses": "MIT",
@@ -1019,12 +1145,6 @@
         "licenses": "MIT",
         "repository": "https://github.com/unjs/c12",
         "licenseUrl": "https://github.com/unjs/c12/raw/master/LICENSE",
-        "parents": "UNDEFINED"
-    },
-    "call-bind": {
-        "licenses": "MIT",
-        "repository": "https://github.com/ljharb/call-bind",
-        "licenseUrl": "https://github.com/ljharb/call-bind/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "camelcase": {
@@ -1049,7 +1169,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/chalk/chalk",
         "licenseUrl": "https://github.com/chalk/chalk/raw/master/license",
-        "parents": "nitropack:UNDEFINED"
+        "parents": "UNDEFINED"
     },
     "chardet": {
         "licenses": "MIT",
@@ -1163,6 +1283,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/archiverjs/node-compress-commons",
         "licenseUrl": "https://github.com/archiverjs/node-compress-commons/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "compressible": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jshttp/compressible",
+        "licenseUrl": "https://github.com/jshttp/compressible/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "concat-map": {
@@ -1309,12 +1435,6 @@
         "licenseUrl": "https://github.com/debug-js/debug/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "decode-uri-component": {
-        "licenses": "MIT",
-        "repository": "https://github.com/SamVerschueren/decode-uri-component",
-        "licenseUrl": "https://github.com/SamVerschueren/decode-uri-component/raw/master/license",
-        "parents": "UNDEFINED"
-    },
     "deepmerge": {
         "licenses": "MIT",
         "repository": "https://github.com/TehShrike/deepmerge",
@@ -1423,6 +1543,24 @@
         "licenseUrl": "https://github.com/Raynos/duplexer/raw/master/LICENCE",
         "parents": "UNDEFINED"
     },
+    "duplexify": {
+        "licenses": "MIT",
+        "repository": "https://github.com/mafintosh/duplexify",
+        "licenseUrl": "https://github.com/mafintosh/duplexify/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "eastasianwidth": {
+        "licenses": "MIT",
+        "repository": "https://github.com/komagata/eastasianwidth",
+        "licenseUrl": "https://github.com/komagata/eastasianwidth",
+        "parents": "UNDEFINED"
+    },
+    "ecdsa-sig-formatter": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/Brightspace/node-ecdsa-sig-formatter",
+        "licenseUrl": "https://github.com/Brightspace/node-ecdsa-sig-formatter/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "ee-first": {
         "licenses": "MIT",
         "repository": "https://github.com/jonathanong/ee-first",
@@ -1439,7 +1577,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/mathiasbynens/emoji-regex",
         "licenseUrl": "https://github.com/mathiasbynens/emoji-regex/raw/master/LICENSE-MIT.txt",
-        "parents": "UNDEFINED"
+        "parents": "inquirer:UNDEFINED"
     },
     "encodeurl": {
         "licenses": "MIT",
@@ -1458,6 +1596,12 @@
         "repository": "https://github.com/webpack/enhanced-resolve",
         "licenseUrl": "https://github.com/webpack/enhanced-resolve/raw/master/LICENSE",
         "parents": "externality:UNDEFINED"
+    },
+    "ent": {
+        "licenses": "MIT",
+        "repository": "https://github.com/substack/node-ent",
+        "licenseUrl": "https://github.com/substack/node-ent/raw/master/LICENSE",
+        "parents": "UNDEFINED"
     },
     "entities": {
         "licenses": "BSD-2-Clause",
@@ -1513,6 +1657,12 @@
         "licenseUrl": "https://github.com/jshttp/etag/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "event-target-shim": {
+        "licenses": "MIT",
+        "repository": "https://github.com/mysticatea/event-target-shim",
+        "licenseUrl": "https://github.com/mysticatea/event-target-shim/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "eventemitter3": {
         "licenses": "MIT",
         "repository": "https://github.com/primus/eventemitter3",
@@ -1523,6 +1673,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/execa",
         "licenseUrl": "https://github.com/sindresorhus/execa/raw/master/license",
+        "parents": "UNDEFINED"
+    },
+    "extend": {
+        "licenses": "MIT",
+        "repository": "https://github.com/justmoon/node-extend",
+        "licenseUrl": "https://github.com/justmoon/node-extend/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "external-editor": {
@@ -1545,6 +1701,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/mrmlnc/fast-glob",
         "licenseUrl": "https://github.com/mrmlnc/fast-glob/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "fast-text-encoding": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/samthor/fast-text-encoding",
+        "licenseUrl": "https://github.com/samthor/fast-text-encoding/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "fastq": {
@@ -1583,10 +1745,10 @@
         "licenseUrl": "https://github.com/jonschlinkert/fill-range/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "filter-obj": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/filter-obj",
-        "licenseUrl": "https://github.com/sindresorhus/filter-obj/raw/master/license",
+    "firebase-admin": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/firebase/firebase-admin-node",
+        "licenseUrl": "https://github.com/firebase/firebase-admin-node/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "firebase": {
@@ -1661,10 +1823,28 @@
         "licenseUrl": "https://github.com/Raynos/function-bind/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "functional-red-black-tree": {
+        "licenses": "MIT",
+        "repository": "https://github.com/mikolalysenko/functional-red-black-tree",
+        "licenseUrl": "https://github.com/mikolalysenko/functional-red-black-tree/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "gauge": {
         "licenses": "ISC",
         "repository": "https://github.com/iarna/gauge",
         "licenseUrl": "https://github.com/iarna/gauge/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "gaxios": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/gaxios",
+        "licenseUrl": "https://github.com/googleapis/gaxios/raw/master/LICENSE",
+        "parents": "gcp-metadata:UNDEFINED"
+    },
+    "gcp-metadata": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/gcp-metadata",
+        "licenseUrl": "https://github.com/googleapis/gcp-metadata/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "gensync": {
@@ -1677,12 +1857,6 @@
         "licenses": "ISC",
         "repository": "https://github.com/stefanpenner/get-caller-file",
         "licenseUrl": "https://github.com/stefanpenner/get-caller-file/raw/master/LICENSE.md",
-        "parents": "UNDEFINED"
-    },
-    "get-intrinsic": {
-        "licenses": "MIT",
-        "repository": "https://github.com/ljharb/get-intrinsic",
-        "licenseUrl": "https://github.com/ljharb/get-intrinsic/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "get-port-please": {
@@ -1745,10 +1919,34 @@
         "licenseUrl": "https://github.com/sindresorhus/globby/raw/master/license",
         "parents": "UNDEFINED"
     },
+    "google-auth-library": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/google-auth-library-nodejs",
+        "licenseUrl": "https://github.com/googleapis/google-auth-library-nodejs/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "google-gax": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/gax-nodejs",
+        "licenseUrl": "https://github.com/googleapis/gax-nodejs/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "google-p12-pem": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googleapis/google-p12-pem",
+        "licenseUrl": "https://github.com/googleapis/google-p12-pem/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "graceful-fs": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/node-graceful-fs",
         "licenseUrl": "https://github.com/isaacs/node-graceful-fs/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "gtoken": {
+        "licenses": "MIT",
+        "repository": "https://github.com/google/node-gtoken",
+        "licenseUrl": "https://github.com/google/node-gtoken/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "gzip-size": {
@@ -1767,12 +1965,6 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/has-flag",
         "licenseUrl": "https://github.com/sindresorhus/has-flag/raw/master/license",
-        "parents": "UNDEFINED"
-    },
-    "has-symbols": {
-        "licenses": "MIT",
-        "repository": "https://github.com/inspect-js/has-symbols",
-        "licenseUrl": "https://github.com/inspect-js/has-symbols/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "has-unicode": {
@@ -1815,6 +2007,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/creationix/http-parser-js",
         "licenseUrl": "https://github.com/creationix/http-parser-js/raw/master/LICENSE.md",
+        "parents": "UNDEFINED"
+    },
+    "http-proxy-agent": {
+        "licenses": "MIT",
+        "repository": "https://github.com/TooTallNate/node-http-proxy-agent",
+        "licenseUrl": "https://github.com/TooTallNate/node-http-proxy-agent",
         "parents": "UNDEFINED"
     },
     "http-proxy": {
@@ -1991,6 +2189,12 @@
         "licenseUrl": "https://github.com/IonicaBizau/node-is-ssh/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "is-stream-ended": {
+        "licenses": "MIT",
+        "repository": "https://github.com/stephenplusplus/is-stream-ended",
+        "licenseUrl": "https://github.com/stephenplusplus/is-stream-ended/raw/master/license",
+        "parents": "UNDEFINED"
+    },
     "is-stream": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/is-stream",
@@ -2033,6 +2237,12 @@
         "licenseUrl": "https://github.com/unjs/jiti/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "jose": {
+        "licenses": "MIT",
+        "repository": "https://github.com/panva/jose",
+        "licenseUrl": "https://github.com/panva/jose/raw/master/LICENSE.md",
+        "parents": "UNDEFINED"
+    },
     "js-tokens": {
         "licenses": "MIT",
         "repository": "https://github.com/lydell/js-tokens",
@@ -2045,10 +2255,10 @@
         "licenseUrl": "https://github.com/mathiasbynens/jsesc/raw/master/LICENSE-MIT.txt",
         "parents": "UNDEFINED"
     },
-    "json-schema-traverse": {
+    "json-bigint": {
         "licenses": "MIT",
-        "repository": "https://github.com/epoberezkin/json-schema-traverse",
-        "licenseUrl": "https://github.com/epoberezkin/json-schema-traverse/raw/master/LICENSE",
+        "repository": "https://github.com/sidorares/json-bigint",
+        "licenseUrl": "https://github.com/sidorares/json-bigint/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "json5": {
@@ -2069,10 +2279,34 @@
         "licenseUrl": "https://github.com/jprichardson/node-jsonfile/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "jsonwebtoken": {
+        "licenses": "MIT",
+        "repository": "https://github.com/auth0/node-jsonwebtoken",
+        "licenseUrl": "https://github.com/auth0/node-jsonwebtoken/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "jszip": {
         "licenses": "(MIT OR GPL-3.0-or-later)",
         "repository": "https://github.com/Stuk/jszip",
         "licenseUrl": "https://github.com/Stuk/jszip/raw/master/LICENSE.markdown",
+        "parents": "UNDEFINED"
+    },
+    "jwa": {
+        "licenses": "MIT",
+        "repository": "https://github.com/brianloveswords/node-jwa",
+        "licenseUrl": "https://github.com/brianloveswords/node-jwa/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "jwks-rsa": {
+        "licenses": "MIT",
+        "repository": "https://github.com/auth0/node-jwks-rsa",
+        "licenseUrl": "https://github.com/auth0/node-jwks-rsa/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "jws": {
+        "licenses": "MIT",
+        "repository": "https://github.com/brianloveswords/node-jws",
+        "licenseUrl": "https://github.com/brianloveswords/node-jws/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "klona": {
@@ -2111,6 +2345,12 @@
         "licenseUrl": "https://github.com/antonk52/lilconfig/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "limiter": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jhurliman/node-rate-limiter",
+        "licenseUrl": "http://github.com/jhurliman/node-rate-limiter/raw/master/LICENSE.txt",
+        "parents": "UNDEFINED"
+    },
     "listhen": {
         "licenses": "MIT",
         "repository": "https://github.com/unjs/listhen",
@@ -2130,6 +2370,12 @@
         "parents": "UNDEFINED"
     },
     "lodash.camelcase": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "lodash.clonedeep": {
         "licenses": "MIT",
         "repository": "https://github.com/lodash/lodash",
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
@@ -2159,7 +2405,31 @@
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "lodash.includes": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "lodash.isarguments": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "lodash.isboolean": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "lodash.isinteger": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "lodash.isnumber": {
         "licenses": "MIT",
         "repository": "https://github.com/lodash/lodash",
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
@@ -2171,7 +2441,19 @@
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "lodash.isstring": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "lodash.memoize": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "lodash.once": {
         "licenses": "MIT",
         "repository": "https://github.com/lodash/lodash",
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
@@ -2190,12 +2472,6 @@
         "parents": "UNDEFINED"
     },
     "lodash.templatesettings": {
-        "licenses": "MIT",
-        "repository": "https://github.com/lodash/lodash",
-        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
-        "parents": "UNDEFINED"
-    },
-    "lodash.truncate": {
         "licenses": "MIT",
         "repository": "https://github.com/lodash/lodash",
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
@@ -2229,12 +2505,18 @@
         "licenses": "Apache-2.0",
         "repository": "https://github.com/dcodeIO/long.js",
         "licenseUrl": "https://github.com/dcodeIO/long.js/raw/master/LICENSE",
-        "parents": "UNDEFINED"
+        "parents": "protobufjs:@grpc/grpc-js:UNDEFINED"
     },
     "lru-cache": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/node-lru-cache",
         "licenseUrl": "https://github.com/isaacs/node-lru-cache/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "lru-memoizer": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jfromaniello/lru-memoizer",
+        "licenseUrl": "https://github.com/jfromaniello/lru-memoizer/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "magic-string": {
@@ -2277,6 +2559,18 @@
         "licenses": "MIT",
         "repository": "https://github.com/micromatch/micromatch",
         "licenseUrl": "https://github.com/micromatch/micromatch/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "mime-db": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jshttp/mime-db",
+        "licenseUrl": "https://github.com/jshttp/mime-db/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "mime-types": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jshttp/mime-types",
+        "licenseUrl": "https://github.com/jshttp/mime-types/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "mime": {
@@ -2337,7 +2631,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/vercel/ms",
         "licenseUrl": "https://github.com/vercel/ms/raw/master/license.md",
-        "parents": "send:UNDEFINED"
+        "parents": "UNDEFINED"
     },
     "mute-stream": {
         "licenses": "ISC",
@@ -2349,7 +2643,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/ai/nanoid",
         "licenseUrl": "https://github.com/ai/nanoid/raw/master/LICENSE",
-        "parents": "UNDEFINED"
+        "parents": "@nuxt/telemetry:UNDEFINED"
     },
     "neo-async": {
         "licenses": "MIT",
@@ -2359,6 +2653,8 @@
     },
     "nitropack": {
         "licenses": "MIT",
+        "repository": "https://github.com/unjs/nitro",
+        "licenseUrl": "https://github.com/unjs/nitro/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "node-domexception": {
@@ -2457,10 +2753,10 @@
         "licenseUrl": "https://github.com/sindresorhus/object-assign/raw/master/license",
         "parents": "UNDEFINED"
     },
-    "object-inspect": {
+    "object-hash": {
         "licenses": "MIT",
-        "repository": "https://github.com/inspect-js/object-inspect",
-        "licenseUrl": "https://github.com/inspect-js/object-inspect/raw/master/LICENSE",
+        "repository": "https://github.com/puleos/object-hash",
+        "licenseUrl": "https://github.com/puleos/object-hash/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "ohash": {
@@ -2511,6 +2807,12 @@
         "licenseUrl": "https://github.com/sindresorhus/os-tmpdir/raw/master/license",
         "parents": "UNDEFINED"
     },
+    "p-limit": {
+        "licenses": "MIT",
+        "repository": "https://github.com/sindresorhus/p-limit",
+        "licenseUrl": "https://github.com/sindresorhus/p-limit/raw/master/license",
+        "parents": "UNDEFINED"
+    },
     "pako": {
         "licenses": "(MIT AND Zlib)",
         "repository": "https://github.com/nodeca/pako",
@@ -2533,6 +2835,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/IonicaBizau/parse-url",
         "licenseUrl": "https://github.com/IonicaBizau/parse-url/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "parse5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inikulin/parse5",
+        "licenseUrl": "https://github.com/inikulin/parse5/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "parseurl": {
@@ -2817,17 +3125,23 @@
         "licenseUrl": "https://github.com/taylorhakes/promise-polyfill/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
+    "proto3-json-serializer": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/proto3-json-serializer-nodejs",
+        "licenseUrl": "https://github.com/googleapis/proto3-json-serializer-nodejs/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "protobufjs": {
         "licenses": "BSD-3-Clause",
         "repository": "https://github.com/protobufjs/protobuf.js",
         "licenseUrl": "https://github.com/protobufjs/protobuf.js/raw/master/LICENSE",
-        "parents": "UNDEFINED"
+        "parents": "@grpc/grpc-js:UNDEFINED"
     },
     "protocols": {
         "licenses": "MIT",
         "repository": "https://github.com/IonicaBizau/protocols",
         "licenseUrl": "https://github.com/IonicaBizau/protocols/raw/master/LICENSE",
-        "parents": "is-ssh:UNDEFINED"
+        "parents": "UNDEFINED"
     },
     "prr": {
         "licenses": "MIT",
@@ -2835,22 +3149,22 @@
         "licenseUrl": "https://github.com/rvagg/prr/raw/master/LICENSE.md",
         "parents": "UNDEFINED"
     },
-    "punycode": {
-        "licenses": "MIT",
-        "repository": "https://github.com/bestiejs/punycode.js",
-        "licenseUrl": "https://github.com/bestiejs/punycode.js/raw/master/LICENSE-MIT.txt",
+    "pseudomap": {
+        "licenses": "ISC",
+        "repository": "https://github.com/isaacs/pseudomap",
+        "licenseUrl": "https://github.com/isaacs/pseudomap/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "qs": {
-        "licenses": "BSD-3-Clause",
-        "repository": "https://github.com/ljharb/qs",
-        "licenseUrl": "https://github.com/ljharb/qs/raw/master/LICENSE.md",
+    "pump": {
+        "licenses": "MIT",
+        "repository": "https://github.com/mafintosh/pump",
+        "licenseUrl": "https://github.com/mafintosh/pump/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "query-string": {
+    "pumpify": {
         "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/query-string",
-        "licenseUrl": "https://github.com/sindresorhus/query-string/raw/master/license",
+        "repository": "https://github.com/mafintosh/pumpify",
+        "licenseUrl": "https://github.com/mafintosh/pumpify/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "queue-microtask": {
@@ -2925,12 +3239,6 @@
         "licenseUrl": "https://github.com/troygoode/node-require-directory/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "require-from-string": {
-        "licenses": "MIT",
-        "repository": "https://github.com/floatdrop/require-from-string",
-        "licenseUrl": "https://github.com/floatdrop/require-from-string/raw/master/license",
-        "parents": "UNDEFINED"
-    },
     "requires-port": {
         "licenses": "MIT",
         "repository": "https://github.com/unshiftio/requires-port",
@@ -2953,6 +3261,18 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/restore-cursor",
         "licenseUrl": "https://github.com/sindresorhus/restore-cursor/raw/master/license",
+        "parents": "UNDEFINED"
+    },
+    "retry-request": {
+        "licenses": "MIT",
+        "repository": "https://github.com/stephenplusplus/retry-request",
+        "licenseUrl": "https://github.com/stephenplusplus/retry-request/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "retry": {
+        "licenses": "MIT",
+        "repository": "https://github.com/tim-kos/node-retry",
+        "licenseUrl": "https://github.com/tim-kos/node-retry/raw/master/License",
         "parents": "UNDEFINED"
     },
     "reusify": {
@@ -3035,9 +3355,9 @@
     },
     "scule": {
         "licenses": "MIT",
-        "repository": "https://github.com/nuxt-contrib/scule",
-        "licenseUrl": "https://github.com/nuxt-contrib/scule/raw/master/LICENSE",
-        "parents": "UNDEFINED"
+        "repository": "https://github.com/unjs/scule",
+        "licenseUrl": "https://github.com/unjs/scule/raw/master/LICENSE",
+        "parents": "untyped:UNDEFINED"
     },
     "selenium-webdriver": {
         "licenses": "Apache-2.0",
@@ -3111,12 +3431,6 @@
         "licenseUrl": "https://github.com/sindresorhus/shebang-regex/raw/master/license",
         "parents": "UNDEFINED"
     },
-    "side-channel": {
-        "licenses": "MIT",
-        "repository": "https://github.com/ljharb/side-channel",
-        "licenseUrl": "https://github.com/ljharb/side-channel/raw/master/LICENSE",
-        "parents": "UNDEFINED"
-    },
     "signal-exit": {
         "licenses": "ISC",
         "repository": "https://github.com/tapjs/signal-exit",
@@ -3127,12 +3441,6 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/slash",
         "licenseUrl": "https://github.com/sindresorhus/slash/raw/master/license",
-        "parents": "UNDEFINED"
-    },
-    "slice-ansi": {
-        "licenses": "MIT",
-        "repository": "https://github.com/chalk/slice-ansi",
-        "licenseUrl": "https://github.com/chalk/slice-ansi/raw/master/license",
         "parents": "UNDEFINED"
     },
     "source-map-js": {
@@ -3159,12 +3467,6 @@
         "licenseUrl": "https://github.com/Rich-Harris/sourcemap-codec/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "split-on-first": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/split-on-first",
-        "licenseUrl": "https://github.com/sindresorhus/split-on-first/raw/master/license",
-        "parents": "UNDEFINED"
-    },
     "stable": {
         "licenses": "MIT",
         "repository": "https://github.com/Two-Screen/stable",
@@ -3189,17 +3491,23 @@
         "licenseUrl": "https://github.com/unjs/std-env/raw/master/LICENCE",
         "parents": "UNDEFINED"
     },
-    "strict-uri-encode": {
+    "stream-events": {
         "licenses": "MIT",
-        "repository": "https://github.com/kevva/strict-uri-encode",
-        "licenseUrl": "https://github.com/kevva/strict-uri-encode/raw/master/license",
+        "repository": "https://github.com/stephenplusplus/stream-events",
+        "licenseUrl": "https://github.com/stephenplusplus/stream-events",
+        "parents": "UNDEFINED"
+    },
+    "stream-shift": {
+        "licenses": "MIT",
+        "repository": "https://github.com/mafintosh/stream-shift",
+        "licenseUrl": "https://github.com/mafintosh/stream-shift/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "string-width": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/string-width",
         "licenseUrl": "https://github.com/sindresorhus/string-width/raw/master/license",
-        "parents": "UNDEFINED"
+        "parents": "inquirer:UNDEFINED"
     },
     "string_decoder": {
         "licenses": "MIT",
@@ -3211,7 +3519,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/chalk/strip-ansi",
         "licenseUrl": "https://github.com/chalk/strip-ansi/raw/master/license",
-        "parents": "UNDEFINED"
+        "parents": "ora:UNDEFINED"
     },
     "strip-final-newline": {
         "licenses": "MIT",
@@ -3223,6 +3531,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/antfu/strip-literal",
         "licenseUrl": "https://github.com/antfu/strip-literal/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "stubs": {
+        "licenses": "MIT",
+        "repository": "https://github.com/stephenplusplus/stubs",
+        "licenseUrl": "https://github.com/stephenplusplus/stubs",
         "parents": "UNDEFINED"
     },
     "stylehacks": {
@@ -3255,12 +3569,6 @@
         "licenseUrl": "https://github.com/svg/svgo/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "table": {
-        "licenses": "BSD-3-Clause",
-        "repository": "https://github.com/gajus/table",
-        "licenseUrl": "https://github.com/gajus/table/raw/master/LICENSE",
-        "parents": "UNDEFINED"
-    },
     "tapable": {
         "licenses": "MIT",
         "repository": "http://github.com/webpack/tapable",
@@ -3279,10 +3587,22 @@
         "licenseUrl": "https://github.com/npm/node-tar/raw/master/LICENSE",
         "parents": "@mapbox/node-pre-gyp:UNDEFINED"
     },
+    "teeny-request": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/googleapis/teeny-request",
+        "licenseUrl": "https://github.com/googleapis/teeny-request/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
     "terser": {
         "licenses": "BSD-2-Clause",
         "repository": "https://github.com/terser/terser",
         "licenseUrl": "https://github.com/terser/terser/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "text-decoding": {
+        "licenses": "MIT",
+        "repository": "https://github.com/idiocc/text-decoding",
+        "licenseUrl": "https://github.com/idiocc/text-decoding/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
     "through": {
@@ -3367,7 +3687,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/unjs/unimport",
         "licenseUrl": "https://github.com/unjs/unimport/raw/master/LICENSE",
-        "parents": "UNDEFINED"
+        "parents": "nitropack:UNDEFINED"
     },
     "universalify": {
         "licenses": "MIT",
@@ -3379,7 +3699,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/unjs/unplugin",
         "licenseUrl": "https://github.com/unjs/unplugin/raw/master/LICENSE",
-        "parents": "UNDEFINED"
+        "parents": "nitropack:UNDEFINED"
     },
     "unstorage": {
         "licenses": "MIT",
@@ -3399,16 +3719,16 @@
         "licenseUrl": "https://github.com/browserslist/update-db/raw/master/LICENSE",
         "parents": "UNDEFINED"
     },
-    "uri-js": {
-        "licenses": "BSD-2-Clause",
-        "repository": "http://github.com/garycourt/uri-js",
-        "licenseUrl": "http://github.com/garycourt/uri-js/raw/master/LICENSE",
-        "parents": "UNDEFINED"
-    },
     "util-deprecate": {
         "licenses": "MIT",
         "repository": "https://github.com/TooTallNate/util-deprecate",
         "licenseUrl": "https://github.com/TooTallNate/util-deprecate/raw/master/LICENSE",
+        "parents": "UNDEFINED"
+    },
+    "uuid": {
+        "licenses": "MIT",
+        "repository": "https://github.com/uuidjs/uuid",
+        "licenseUrl": "https://github.com/uuidjs/uuid/raw/master/LICENSE.md",
         "parents": "UNDEFINED"
     },
     "vite-node": {
@@ -3559,7 +3879,7 @@
         "licenses": "MIT",
         "repository": "https://github.com/chalk/wrap-ansi",
         "licenseUrl": "https://github.com/chalk/wrap-ansi/raw/master/license",
-        "parents": "UNDEFINED"
+        "parents": "inquirer:UNDEFINED"
     },
     "wrappy": {
         "licenses": "ISC",
@@ -3608,6 +3928,12 @@
         "repository": "https://github.com/yargs/yargs",
         "licenseUrl": "https://github.com/yargs/yargs/raw/master/LICENSE",
         "parents": "rollup-plugin-visualizer:UNDEFINED"
+    },
+    "yocto-queue": {
+        "licenses": "MIT",
+        "repository": "https://github.com/sindresorhus/yocto-queue",
+        "licenseUrl": "https://github.com/sindresorhus/yocto-queue/raw/master/license",
+        "parents": "UNDEFINED"
     },
     "zip-stream": {
         "licenses": "MIT",

@@ -1,8 +1,8 @@
 import { firestore } from "../utils/firebase";
 
-firestore;
-
 export default defineEventHandler(async (event) => {
+  const { content } = await useBody(event);
+  
   return {
     api: "Hi",
   };
