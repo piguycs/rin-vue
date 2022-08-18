@@ -4,8 +4,8 @@ An open source real time chat application written in nuxt 3.
 
 ## Screenshots
 
-![screenshot](https://raw.githubusercontent.com/RocKing1001/rin/main/.github/images/Screenshot1.png)
-![login](https://raw.githubusercontent.com/RocKing1001/rin/main/.github/images/Screenshot2.png)
+<!-- ![screenshot](https://raw.githubusercontent.com/RocKing1001/rin/main/.github/images/Screenshot1.png)
+![login](https://raw.githubusercontent.com/RocKing1001/rin/main/.github/images/Screenshot2.png) -->
 
 ## Tech Stack
 
