@@ -29,16 +29,19 @@ export default defineEventHandler(async (event) => {
 
     inviteCheck() && usernameCheck();
 
-    const user = await auth.createUser({
-      displayName: username,
-      email,
-      password,
-      photoURL: pfp,
-    });
-
-    return {
-      success: true,
-    };
+    try {
+      const user = await auth.createUser({
+        displayName: username,
+        email,
+        password,
+        photoURL: pfp,
+      });
+      return {
+        success: true,
+      };
+    } catch (e) {
+      throw e;
+    }
   } catch (e) {
     console.log(e);
     event.res.statusCode = 400;
