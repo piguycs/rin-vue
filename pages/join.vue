@@ -9,6 +9,16 @@
 
     <!-- Loading screen -->
     <Load v-if="showLoad.load" />
+
+    <!-- Alert box -->
+    <Alert
+      v-if="showAlert"
+      :text="alertText"
+      @disable="
+        showAlert = false;
+        alertText = 'error unknown';
+      "
+    />
   </div>
 </template>
 
@@ -19,6 +29,14 @@ const showLoad = ref({
   load: false,
   error: false,
 });
+
+const showAlert = ref(true);
+const alertText = ref("Invite code is invalid");
+
+function alert(text: string) {
+  showAlert.value = true;
+  alertText.value = text;
+}
 
 // INVITE CODE CHECK FORM
 const inviteCode = ref("");

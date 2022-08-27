@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <h1>
+    <h1 class="text-3xl font-extrabold">
       {{ props.headingNormal }}
       <span class="fancy-text">{{ props.headingHighlight }}</span>
     </h1>

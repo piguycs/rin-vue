@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");  
 module.exports = {
   content: [],
   theme: {
@@ -7,6 +8,7 @@ module.exports = {
         "bg-1": "hsl(235, 25%, 10%)",
         "bg-2": "hsl(240, 25%, 15%)",
         "bg-3": "hsl(238, 25%, 20%)",
+        "bg-text": "hsl(238, 25%, 75%)",
 
         "accent-1": "hsl(346, 67%, 65%)",
         "accent-2": "hsl(346, 67%, 60%)",
@@ -17,6 +19,9 @@ module.exports = {
         "fg-2": "hsl(228, 7%, 59%)",
       },
     },
+    fontFamily: {
+      sans: ["Inter", ...defaultTheme.fontFamily.sans, "Fira Code NF"]
+    }
   },
   plugins: [],
 };
