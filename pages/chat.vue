@@ -8,10 +8,12 @@
 
     <!-- Main Chat Area -->
     <div
-      class="bg-bg-1 rounded-l-xl grid grid-cols-[16rem_1fr] pl-3 pr-4 pt-4 pb-[1.2rem] gap-4"
+      class="bg-bg-1 rounded-l-xl grid lg:grid-cols-[16rem_1fr] pl-6 lg:pl-3 pr-4 pt-4 pb-[1.2rem] gap-4"
     >
       <!-- Server sidebar -->
-      <div class="bg-bg-2 rounded-xl py-2 px-4 grid grid-rows-[4.2rem_1fr]">
+      <div
+        class="bg-bg-2 rounded-xl py-2 px-4 hidden lg:grid grid-rows-[4.2rem_1fr]"
+      >
         <h1 class="text-white font-bold text-2xl">{{ server.name }}</h1>
         <div class="overflow-scroll text-white text-xl">
           <div class="h-px my-4">
@@ -53,7 +55,7 @@
         >
           <img :src="user.photoURL" alt="pfp" class="rounded-full h-11" />
           <div class="grid gap-0">
-            <p class="text-white font-semibold text-lg leading-5">
+            <p class="text-cyan-200 font-semibold text-lg leading-5">
               {{ user.displayName }}
             </p>
             <p class="text-gray-400 font-medium text-sm">early alpha user</p>
@@ -73,9 +75,22 @@
               class="text-white mt-5 grid grid-flow-col justify-start gap-3"
               :id="msg.time.nanoseconds"
             >
-              <img :src="msg.sender.pfp" alt="pfp" class="h-10 rounded-full" />
+              <img
+                :src="msg.sender.pfp"
+                alt="pfp"
+                class="h-10 rounded-full cursor-pointer hover:shadow-xl"
+              />
               <div>
-                <b>{{ msg.sender ? msg.sender.name : "unknown" }}</b>
+                <b
+                  class="cursor-pointer hover:underline"
+                  v-if="msg.sender.uid !== user.uid"
+                  >{{ msg.sender ? msg.sender.name : "unknown" }}</b
+                >
+                <b
+                  class="cursor-pointer hover:underline text-cyan-200"
+                  v-else
+                  >{{ msg.sender ? msg.sender.name : "unknown" }}</b
+                >
                 <p>
                   {{ msg.content || "something wrong happened, please report" }}
                 </p>
@@ -195,10 +210,10 @@ onMounted(() => {
 
   watchEffect(
     () => {
-      console.log(messages.value);
+      // console.log(messages.value);
       if (messages.value) {
         const a = document.getElementById("msgb");
-        a.scrollTop = (a as any).scrollTopMax;
+        a.scrollTop = a.scrollHeight;
       }
     },
     {
@@ -218,10 +233,10 @@ onMounted(() => {
   const roomcol = collection(db, `rooms/${server.value.roomid}/messages`);
 
   const getHistory = async () => {
-    const q = query(roomcol, orderBy("time"), limit(50));
+    const q = query(roomcol, orderBy("time", "desc"), limit(50));
     const roomSnapshot = await getDocs(q);
 
-    messages.value = roomSnapshot.docs.map((e) => e.data());
+    messages.value = roomSnapshot.docs.map((e) => e.data()).reverse();
   };
 
   getHistory();
@@ -237,7 +252,7 @@ onMounted(() => {
 
         setTimeout(() => {
           const a = document.getElementById("msgb");
-          a.scrollTop = (a as any).scrollTopMax;
+          a.scrollTop = a.scrollHeight;
         }, 0);
       }
     }

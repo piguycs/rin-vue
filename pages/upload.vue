@@ -17,6 +17,7 @@
 
 <script lang="ts" setup>
 import { getStorage, ref as stref, uploadBytes } from "firebase/storage";
+import { getAuth } from "@firebase/auth";
 const url = ref("");
 
 const img = ref("");
@@ -27,10 +28,11 @@ function previewFiles(e) {
 async function submit(e: Event) {
   e.preventDefault();
 
-  const time = Date.now().toString();
+  // const name = Date.now().toString();
+  const name = getAuth().currentUser.uid;
 
   const storage = getStorage();
-  const pfpref = stref(storage, `profilePictures/${time}`);
+  const pfpref = stref(storage, `profilePictures/${name}`);
 
   const pfp: any = document.querySelector("input[type=file]#pfp");
   if (!(pfp.files && pfp.files.length > 0)) {
@@ -49,7 +51,7 @@ async function submit(e: Event) {
     // undefined.... I truly hate js with a passion
     url.value =
       "https://firebasestorage.googleapis.com/v0/b/rin-backend.appspot.com/o/profilePictures%2F" +
-      time +
+      name +
       "?alt=media";
   });
 }
