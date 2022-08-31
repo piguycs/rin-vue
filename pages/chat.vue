@@ -2,8 +2,9 @@
   <!-- ROOT DIV -->
   <div class="bg-bg-2 h-screen w-screen grid grid-cols-[5.6rem_1fr] font-sans">
     <!-- Server list sidebar -->
-    <div class="">
+    <div class="grid grid-rows-[34px_1fr]">
       <p class="text-gray-400 px-6 py-1 text-lg font-mono font-semibold">rin</p>
+      <ServerListBar @click="addServer" />
     </div>
 
     <!-- Main Chat Area -->
@@ -27,11 +28,12 @@
             </div>
             <div
               class="px-2 py-[4px] hover:bg-bg-3 text-lg text-bg-text cursor-pointer mt-1 rounded-lg grid grid-flow-col justify-start gap-2"
-              v-for="channels in server.channels"
+              v-for="channel in server.channels"
+              :class="channel === 'general' ? 'bg-bg-3' : ''"
             >
               <p class="text-3xl leading-8 select-none"></p>
               <p>
-                {{ channels }}
+                {{ channel }}
               </p>
             </div>
 
@@ -69,7 +71,7 @@
       <!-- Server chat history -->
       <div class="grid grid-rows-[1fr_3.4rem]">
         <div class="overflow-scroll mb-4" id="msgb">
-          <div class="h-px" id="msga" v-on:change="helloworld">
+          <div class="h-px" id="msga">
             <div
               v-for="msg in messages"
               class="text-white mt-5 grid grid-flow-col justify-start gap-3"
@@ -78,7 +80,7 @@
               <img
                 :src="msg.sender.pfp"
                 alt="pfp"
-                class="h-10 rounded-full cursor-pointer hover:shadow-xl"
+                class="h-10 w-10 rounded-full cursor-pointer hover:shadow-xl object-cover"
               />
               <div>
                 <b
@@ -107,6 +109,9 @@
       </div>
     </div>
   </div>
+
+  <!-- server join dialogue -->
+  <JoinServerBox v-if="showJoinBox" @join="joinServer" @cancle="showJoinBox = false" />
 </template>
 
 <script lang="ts" setup>
@@ -122,6 +127,23 @@ import {
   limit,
   DocumentData,
 } from "@firebase/firestore";
+
+const showJoinBox = ref(false);
+
+const serverid = ref("0");
+
+const { data: serverInfo, error: serverInfoError } = await useFetch(
+  "/api/getserverinfo",
+  {
+    params: {
+      serverid: serverid.value,
+    },
+  }
+);
+
+if (serverInfoError.value) {
+  console.error(serverInfoError.value);
+}
 
 const server = ref<{
   name: string;
@@ -161,9 +183,23 @@ const server = ref<{
   },
 });
 
-function helloworld() {
-  console.log("helloworld");
+const addServer = () => {
+  // I now want to add people to the main server here
+  showJoinBox.value = true;
+};
+
+function joinServer() {
+  $fetch("/api/updaterooms", {
+    body: {
+      uid: uid.value
+    },
+    method: "POST"
+  })
 }
+
+server.value.members = serverInfo.value.members.map((e) => {
+  return { perms: 0, uid: e };
+});
 
 useHead({
   title: `${server.value.name} - Rin chat`,
