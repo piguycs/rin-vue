@@ -3,11 +3,24 @@ import { firestore } from "../utils/firebase";
 export default defineEventHandler(async (event) => {
   try {
     const query = useQuery(event);
-    const serverid = query.serverid.toString();
+    const serverid = query.serverid!.toString();
 
-    const a = await firestore.doc(`rooms/${serverid}`).get();
+    const firebaseData = await firestore.doc(`rooms/${serverid}`).get();
+    let members: {
+      uid: string;
+      perms: { read: boolean; write: boolean };
+    }[] = [];
 
-    const response = { members: a.data().members as string[], error: null };
+    const data = firebaseData.data()!.members;
+
+    for (let key in data) {
+      members.push({ uid: key, perms: data[key].perms });
+    }
+
+    const response = {
+      members,
+      error: null,
+    };
 
     return response;
   } catch (e) {

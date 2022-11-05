@@ -68,7 +68,7 @@ onMounted(() => {
   user.value = auth.currentUser;
   onAuthStateChanged(auth, (e) => {
     user.value = e;
-    console.log(user.value.photoURL)
+    // console.log(user.value.photoURL)
   });
 });
 

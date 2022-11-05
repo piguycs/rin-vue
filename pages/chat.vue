@@ -47,7 +47,7 @@
               v-for="member in server.members"
               :id="member.uid"
             >
-              {{ member.uid }}
+              {{ member.uid + "r/w" }}
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@
           v-if="user"
           class="grid grid-flow-col h-min items-center grid-cols-[2.5rem_1fr] gap-4 cursor-pointer"
         >
-          <img :src="user.photoURL" alt="pfp" class="rounded-full h-11" />
+          <img :src="user.photoURL!" alt="pfp" class="rounded-full h-11" />
           <div class="grid gap-0">
             <p class="text-cyan-200 font-semibold text-lg leading-5">
               {{ user.displayName }}
@@ -85,7 +85,7 @@
               <div>
                 <b
                   class="cursor-pointer hover:underline"
-                  v-if="msg.sender.uid !== user.uid"
+                  v-if="msg.sender.uid !== user!.uid"
                   >{{ msg.sender ? msg.sender.name : "unknown" }}</b
                 >
                 <b
@@ -108,10 +108,14 @@
         </form>
       </div>
     </div>
+    <JoinServerBox
+      v-if="showJoinBox"
+      @join="joinServer"
+      @cancle="showJoinBox = false"
+    />
   </div>
 
   <!-- server join dialogue -->
-  <JoinServerBox v-if="showJoinBox" @join="joinServer" @cancle="showJoinBox = false" />
 </template>
 
 <script lang="ts" setup>
@@ -130,13 +134,15 @@ import {
 
 const showJoinBox = ref(false);
 
-const serverid = ref("0");
+const serverID = ref("0");
+
+const pfpList = ref<any>({});
 
 const { data: serverInfo, error: serverInfoError } = await useFetch(
   "/api/getserverinfo",
   {
     params: {
-      serverid: serverid.value,
+      serverid: serverID.value,
     },
   }
 );
@@ -150,7 +156,10 @@ const server = ref<{
   roomid: number;
   channels: string[];
   members: {
-    perms: number;
+    perms: {
+      read: boolean;
+      write: boolean;
+    };
     uid: string;
   }[];
   perms: {
@@ -161,21 +170,8 @@ const server = ref<{
 }>({
   name: "Rin Development Room",
   roomid: 0,
-  channels: [
-    "general",
-    "we have gaps",
-    // "dying",
-    // "graveyard",
-    // "bots",
-    // "rules",
-    // "faq",
-  ],
-  members: [
-    {
-      perms: 0,
-      uid: "SgKGQV92TDUTIXcFGAmgFP481s43",
-    },
-  ],
+  channels: ["general", "we have gaps"],
+  members: [],
   perms: {
     0: {
       colour: "#ff7070",
@@ -191,15 +187,13 @@ const addServer = () => {
 function joinServer() {
   $fetch("/api/updaterooms", {
     body: {
-      uid: uid.value
+      uid: uid.value,
     },
-    method: "POST"
-  })
+    method: "POST",
+  });
 }
 
-server.value.members = serverInfo.value.members.map((e) => {
-  return { perms: 0, uid: e };
-});
+server.value.members = serverInfo.value!.members
 
 useHead({
   title: `${server.value.name} - Rin chat`,
@@ -209,7 +203,7 @@ const uid = ref<string>("");
 
 const messages = ref<DocumentData[]>([]);
 
-async function submit(e: Event) {
+async function submit(e: any) {
   e.preventDefault();
   const message = e.target[0].value; // copies the value
 
@@ -222,9 +216,9 @@ async function submit(e: Event) {
   await addDoc(roomcol, {
     content: message,
     sender: {
-      name: user.value.displayName,
-      pfp: user.value.photoURL,
-      uid: user.value.uid,
+      name: user.value!.displayName,
+      pfp: user.value!.photoURL,
+      uid: user.value!.uid,
     },
     time: new Date(),
   });
@@ -235,11 +229,19 @@ const user = ref<null | User>(null);
 onMounted(() => {
   for (let count = 0; count < server.value.members.length; count++) {
     const member = server.value.members[count];
-    const uidEl = document.getElementById(member.uid);
+    const uidEl = document.getElementById(member.uid)!;
+    console.log(uidEl);
 
     $fetch("/api/getuserfromuid", { params: { uid: member.uid } }).then(
       (data) => {
-        uidEl.innerText = data.name || "unknown";
+        
+        let perms: ("r"|"w")[] = [];
+
+        if (member.perms.read) perms.push("r");
+        if (member.perms.write) perms.push("w");
+
+        uidEl.innerText = `${data.name} (${perms})` || "unknown";
+        pfpList[member.uid] = data.pfp;
       }
     );
   }
@@ -248,7 +250,7 @@ onMounted(() => {
     () => {
       // console.log(messages.value);
       if (messages.value) {
-        const a = document.getElementById("msgb");
+        const a = document.getElementById("msgb")!;
         a.scrollTop = a.scrollHeight;
       }
     },
@@ -260,6 +262,7 @@ onMounted(() => {
   // load profile
   const auth = getAuth();
   onAuthStateChanged(auth, (e) => {
+    e = e!;
     user.value = e;
     uid.value = e.uid;
   });
@@ -283,11 +286,12 @@ onMounted(() => {
     (doc) => {
       if (doc.docChanges()[0].type != "added") return;
       if (doc.docChanges().length === 1) {
+        console.log(doc.docChanges());
         const msg = doc.docChanges()[0].doc.data();
         messages.value.push(msg);
 
         setTimeout(() => {
-          const a = document.getElementById("msgb");
+          const a = document.getElementById("msgb")!;
           a.scrollTop = a.scrollHeight;
         }, 0);
       }

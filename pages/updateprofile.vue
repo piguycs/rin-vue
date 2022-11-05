@@ -1,23 +1,17 @@
 <template>
-  <form @submit="updateUserProfile">
-    <h1>Update User Details</h1>
-
-    <p>current user: {{ user ? user.uid : "not signed in or loading" }}</p>
-
-    <label for="name">
-      <span>Username</span>
-      <input type="text" name="name" v-model="username" />
-    </label>
-
-    <label for="pfp">
-      <span>Profile Picture URL</span>
-      <input type="url" name="pfp" v-model="pfp" />
-    </label>
-
-    <input type="submit" value="Submit" />
-
-    <NuxtLink href="/login">login page</NuxtLink>
-  </form>
+  <div class="root">
+    <Form v-bind="formData" />
+    <div
+      id="notif"
+      class="absolute top-2 grid place-items-center w-screen invisible"
+    >
+      <div
+        class="bg-red-500 text-white font-bold px-6 py-3 w-36 rounded-md shadow-xl"
+      >
+        User updated
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -26,6 +20,47 @@ import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { initializeApp, getApps } from "@firebase/app";
 
 const user = ref<User | null>(null);
+
+const username = ref("");
+const pfp = ref("");
+
+async function updateUserProfile(e: Event) {
+  e.preventDefault();
+
+  try {
+    await updateUser(username.value, pfp.value);
+    console.log(username.value, pfp.value);
+
+    const notif = document.getElementById("notif")!;
+
+    notif.style.visibility = "visible";
+
+    setTimeout(() => {
+      notif.style.visibility = "hidden";
+    }, 2000);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+const formData = {
+  headingNormal: "Update your profile",
+  headingHighlight: "",
+  inputs: [
+    {
+      ref: username,
+      name: "Username",
+      type: "text",
+    },
+    {
+      ref: pfp,
+      name: "Photo URL",
+      type: "text",
+    },
+  ],
+  submitText: "Update",
+  submitEvent: updateUserProfile,
+};
 
 onMounted(() => {
   if (getApps().length === 0) {
@@ -43,50 +78,17 @@ onMounted(() => {
     user.value = e;
   });
 });
-
-const username = ref("");
-const pfp = ref("");
-
-async function updateUserProfile(e: Event) {
-  e.preventDefault();
-
-  try {
-    await updateUser(username.value, pfp.value);
-    console.log(username.value, pfp.value);
-  } catch (e) {
-    console.error(e);
-  }
-}
 </script>
 
 <style lang="scss" scoped>
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 40%;
-  gap: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3rem;
+.root {
+  background-image: url("assets/stacked-peaks-haikei.svg");
+  background-size: cover;
 
-  input[type="submit"] {
-    height: 2rem;
-  }
+  height: 100vh;
 
-  input[type="text"],
-  input[type="url"] {
-    height: 1.6rem;
-  }
-
-  label {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-img {
-  width: 192px;
-  aspect-ratio: 1/1;
-  border: 4px solid black;
+  display: grid;
+  place-items: center;
+  grid-template-areas: "o a b";
 }
 </style>

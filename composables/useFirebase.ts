@@ -72,12 +72,16 @@ export const updateUser = async (
   const auth = getAuth();
   const user = auth.currentUser;
 
-  let toUpd = {
-    displayName,
-    photoURL,
-  };
+  let toUpd: any = {};
+  
+  if (photoURL) {
+    toUpd.photoURL = photoURL
+  }
+  if (displayName) {
+    toUpd.displayName = displayName
+  }
 
-  console.log(toUpd);
+  // console.log(toUpd);
 
   await updateProfile(user, toUpd);
   console.info(`updated user`);
