@@ -6,24 +6,28 @@ export default defineEventHandler(async (event) => {
 
   const doc = firestore.doc("rooms/0");
 
-  let members: string[] = (await doc.get()).data().members;
+  let members: { [key: string]: { perms: { write: boolean; read: boolean } } } =
+    (await doc.get()).data()!.members;
 
-  let user: UserRecord
+  let user: UserRecord | null;
   try {
     user = await auth.getUser(uid);
   } catch {
     user = null;
   }
 
-  if (!members.includes(uid) && user) {
-    members = [...members, uid];
+  console.log(members);
+  if (user) {
+    members[uid] = { perms: { write: false, read: true } };
   }
 
-  await doc.update({
-    members,
-  });
+  try {
+    await doc.update({
+      members,
+    });
 
-  return {
-    api: "Hi Mom!",
-  };
+    return { success: true };
+  } catch {
+    return { success: false };
+  }
 });

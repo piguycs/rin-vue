@@ -51,13 +51,26 @@
             </p>
           </div>
         </div>
+        <div class="flex gap-2 w-full">
+          <button
+            v-for="x in nameColour.list"
+            v-on:click="() => (nameColour.current = nameColour.list.indexOf(x))"
+            class="bg-bg-3 mb-4 py-1 w-full rounded-lg hover:text-fg-1 text-2xl"
+            :style="`color: ${nameColour.list[nameColour.list.indexOf(x)]}`"
+          >
+            ●
+          </button>
+        </div>
         <div
           v-if="user"
           class="grid grid-flow-col h-min items-center grid-cols-[2.5rem_1fr] gap-4 cursor-pointer"
         >
           <img :src="user.photoURL!" alt="pfp" class="rounded-full h-11" />
           <div class="grid gap-0">
-            <p class="text-cyan-200 font-semibold text-lg leading-5">
+            <p
+              class="font-semibold text-lg leading-5"
+              :style="`color: ${nameColour.list[nameColour.current]}`"
+            >
               {{ user.displayName }}
             </p>
             <p class="text-gray-400 font-medium text-sm">early alpha user</p>
@@ -74,7 +87,7 @@
           <div class="h-px" id="msga">
             <div
               v-for="msg in messages"
-              class="text-white mt-5 grid grid-flow-col justify-start gap-3"
+              class="text-gray-300 mt-5 grid grid-flow-col justify-start gap-3"
               :id="msg.time.nanoseconds"
             >
               <img
@@ -84,16 +97,17 @@
               />
               <div>
                 <b
-                  class="cursor-pointer hover:underline"
+                  class="text-white cursor-pointer hover:underline"
                   v-if="msg.sender.uid !== user!.uid"
                   >{{ msg.sender ? msg.sender.name : "unknown" }}</b
                 >
                 <b
-                  class="cursor-pointer hover:underline text-cyan-200"
+                  class="cursor-pointer hover:underline"
+                  :style="`color: ${nameColour.list[nameColour.current]}`"
                   v-else
                   >{{ msg.sender ? msg.sender.name : "unknown" }}</b
                 >
-                <p>
+                <p :id="`msgcontent_${msg.time.nanoseconds}`">
                   {{ msg.content || "something wrong happened, please report" }}
                 </p>
               </div>
@@ -104,6 +118,10 @@
           <input
             class="bg-bg-2 rounded-xl h-[3.2rem] text-white p-3 outline-none"
             maxlength="1024"
+            :disabled="!permsCurrent.write"
+            :placeholder="
+              permsCurrent.write ? `Message in general` : 'Not enough perms'
+            "
           />
         </form>
       </div>
@@ -111,7 +129,7 @@
     <JoinServerBox
       v-if="showJoinBox"
       @join="joinServer"
-      @cancle="showJoinBox = false"
+      @cancel="showJoinBox = false"
     />
   </div>
 
@@ -137,6 +155,11 @@ const showJoinBox = ref(false);
 const serverID = ref("0");
 
 const pfpList = ref<any>({});
+
+const nameColour = ref({ list: ["#b0f3fc", "#fcb9b0", "#f3fcb0", "#cdfcb0"], current: 0 });
+
+const permsCurrent = ref({ read: false, write: false });
+const permsList = ref<{ [key: string]: { read: boolean; write: boolean } }>({});
 
 const { data: serverInfo, error: serverInfoError } = await useFetch(
   "/api/getserverinfo",
@@ -193,7 +216,7 @@ function joinServer() {
   });
 }
 
-server.value.members = serverInfo.value!.members
+server.value.members = serverInfo.value!.members;
 
 useHead({
   title: `${server.value.name} - Rin chat`,
@@ -230,17 +253,20 @@ onMounted(() => {
   for (let count = 0; count < server.value.members.length; count++) {
     const member = server.value.members[count];
     const uidEl = document.getElementById(member.uid)!;
-    console.log(uidEl);
 
     $fetch("/api/getuserfromuid", { params: { uid: member.uid } }).then(
       (data) => {
-        
-        let perms: ("r"|"w")[] = [];
+        let permsShow: ("r" | "w")[] = [];
 
-        if (member.perms.read) perms.push("r");
-        if (member.perms.write) perms.push("w");
+        if (member.perms.read) permsShow.push("r");
+        if (member.perms.write) permsShow.push("w");
 
-        uidEl.innerText = `${data.name} (${perms})` || "unknown";
+        permsList.value![member.uid] = {
+          read: member.perms.read,
+          write: member.perms.write,
+        };
+
+        uidEl.innerText = `${data.name} (${permsShow})` || "unknown";
         pfpList[member.uid] = data.pfp;
       }
     );
@@ -265,6 +291,10 @@ onMounted(() => {
     e = e!;
     user.value = e;
     uid.value = e.uid;
+
+    if (uid.value in permsList.value) {
+      permsCurrent.value = permsList.value[uid.value];
+    }
   });
 
   // load messages
@@ -286,7 +316,6 @@ onMounted(() => {
     (doc) => {
       if (doc.docChanges()[0].type != "added") return;
       if (doc.docChanges().length === 1) {
-        console.log(doc.docChanges());
         const msg = doc.docChanges()[0].doc.data();
         messages.value.push(msg);
 

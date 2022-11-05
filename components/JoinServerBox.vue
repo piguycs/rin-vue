@@ -18,9 +18,9 @@
 
         <button
           class="bg-accent-3 px-6 py-2 text-white rounded-md font-bold"
-          v-on:click="$emit('cancle')"
+          v-on:click="$emit('cancel')"
         >
-          Cancle
+          Cancel
         </button>
       </div>
     </div>
